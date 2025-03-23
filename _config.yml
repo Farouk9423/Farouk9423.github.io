@@ -26,23 +26,26 @@ description: >- # used by seo meta and the atom feed
 url: "https://Farouk9423.github.io"
 
 github:
-  username: github_username # change to your GitHub username
+  username: Farouk9423 # changed to your actual GitHub username
 
-# instagram:
-#   username: Hack_with_Farouk # change to your Twitter username
+linkedin:
+  username: farouk-alkowatly # adding LinkedIn configuration
+
+instagram:
+  username: Hack_with_Farouk # changed from Twitter to Instagram
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: faroukalk50@gmail.com # change to your email address
+  name: Farouk Alkowatly # suggest adding your actual name
+  email: faroukalk50@gmail.com
   links:
     # The first element serves as the copyright owner's link
-    #- https://www.linkedin.com/in/farouk-alkowatly/ # change to your Twitter homepage
-    - https://github.com/Farouk9423 # change to your GitHub homepage
+    - https://www.linkedin.com/in/farouk-alkowatly/
+    - https://github.com/Farouk9423
+    - https://www.instagram.com/Hack_with_Farouk/
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/farouk-alkowatly/
 
 # Site Verification Settings
 webmaster_verifications:
