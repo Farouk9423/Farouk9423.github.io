@@ -5,7 +5,7 @@ date: 2025-03-24
 authors: "Farouk"
 layout: post
 categories: Python_for_Hackers
-tags: [Python, Keylogger, Security]
+tags: [Python, Keylogger, Security, PenetrationTesting, Hacker]
 direction: rtl
 ---
 <script>
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <h3 id="-المقدمة" dir="rtl"><span class="me-2"><strong>💡 المقدمة</strong></span><a href="#-المقدمة" class="anchor text-muted"></a></h3>
 
-<p dir="rtl">اول شي خلونا نفهم شو يعني <strong>Ketlogger</strong> , ال <strong>Keylogger</strong> هو عبارة عن برنامج بسجل عندي ضغطات الكيبورد تبع الضحية وهيك بقدر اعرف الحسابات وكلمات السر او حتى الرسائل الخاصة.
+<p dir="rtl">اول شي خلونا نفهم شو يعني <strong>Keylogger</strong> , ال <strong>Keylogger</strong> هو عبارة عن برنامج بسجل عندي ضغطات الكيبورد تبع الضحية وهيك بقدر اعرف الحسابات وكلمات السر او حتى الرسائل الخاصة.
 واليوم رح نعمل سوا <strong>Keylogger بسيط بلغة Python</strong> ونتعرف على آلية عمله بالتفصيل.</p>
 
 <p dir="rtl">📌 <strong>رح يغطي هذا الدرس:</strong></p>
@@ -133,3 +133,4 @@ with Listener(on_press=write_to_file) as listener:
 <p dir='rtl'>هيك صار عندك <strong>Keylogger بسيط وفعال</strong> وهاد الشي حتى تفهم آلية عمله ويكون عندك الفهم البرمجي لطريقة عمله, فلا تستخدموا بطريقة غلط🌚.</p>
 
 <p dir='rtl'><strong>وهلق خبرني شو رأيك بالكود؟ وهل عندك أفكار لتطويره؟🤔</strong></p>
+
