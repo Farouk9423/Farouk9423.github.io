@@ -134,3 +134,13 @@ with Listener(on_press=write_to_file) as listener:
 
 <p dir='rtl'><strong>وهلق خبرني شو رأيك بالكود؟ وهل عندك أفكار لتطويره؟🤔</strong></p>
 
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KKMCPL6FXY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KKMCPL6FXY');
+</script>
