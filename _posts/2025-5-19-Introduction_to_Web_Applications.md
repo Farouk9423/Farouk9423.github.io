@@ -129,14 +129,3 @@ document.addEventListener("DOMContentLoaded", function () {
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
 
 
-
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KKMCPL6FXY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KKMCPL6FXY');
-</script>
