@@ -1261,16 +1261,6 @@ SELECT * FROM employees WHERE first_name like 'Bar%' AND hire_date = '1990-01-01
 </div>
 ---
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KKMCPL6FXY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KKMCPL6FXY');
-</script>
-
 
 
 
