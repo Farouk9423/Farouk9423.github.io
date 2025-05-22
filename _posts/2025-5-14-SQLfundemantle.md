@@ -110,8 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
   <img src="{{ '/images/HTB/Untitled.png' | relative_url }}" alt="HTB">
 </div>
 
-- [HTB الرابط على](https://academy.hackthebox.com/module/33/section/177)
+- [HTB Academy الرابط على](https://academy.hackthebox.com/module/33/section/177)
 ---
+
+<h2 id="Table of Contents" dir=""><span class="me-2"><strong>Table of Contents</strong></span><a href="#Table of Contents" class="anchor text-muted"></a></h2>
 <h2 id="📌 Introduction:" dir=""><span class="me-2"><strong>📌 Introduction:</strong></span><a href="#📌 Introduction:" class="anchor text-muted"></a></h2>
 
 <p dir="rtl" style=" font-size: 20px; line-height: 1.6;">
@@ -158,6 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
       غالبا بكون سبب ال SQL Injection هو اغلاط برمجية او مشاكل بالصلاحيات على ال Database، ورح نحكي لقدام شو هي اهم الطرق يلي بتقلل من احتمالية التعرض ل SQL Injection باستخدام طرق التشفير والتحقق من المدخلات وصلاحيات المستخدم بال Backend.
 </p>
 ---
+
+<h2 id="Databases" dir=""><span class="me-2"><strong>Databases</strong></span><a href="#Databases" class="anchor text-muted"></a></h2>
 
 <h2 id="📌 Intro to Databases" dir=""><span class="me-2"><strong>📌 Intro to Databases</strong></span><a href="#📌 Intro to Databases" class="anchor text-muted"></a></h2>
 
@@ -338,6 +342,8 @@ document.addEventListener("DOMContentLoaded", function () {
     Non-relational Databases الها طريقة تانية تماماً لل Injection بتختلف عن ال SQL Injection، بالنسبة لل NoSQL Injection رح نحكي عنو بمرات جاية لحال.
 </div>
 ---
+<h2 id="MySQL" dir=""><span class="me-2"><strong>MySQL</strong></span><a href="#MySQL" class="anchor text-muted"></a></h2>
+
 <h2 id="📌 Intro to MySQL" dir=""><span class="me-2"><strong>📌 Intro to MySQL</strong></span><a href="#📌 Intro to MySQL" class="anchor text-muted"></a></h2>
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
