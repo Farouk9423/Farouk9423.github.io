@@ -16,7 +16,7 @@ timezone:
 
 title: Hack with Farouk # the main title
 
-tagline: Cyber Security Specialist | Penetration Tester | OSCP Student # it will display as the subtitle
+tagline: Information Security Engineer | Penetration Tester # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Hack with Farouk - Learn ethical hacking, penetration testing, cybersecurity research, Hack The Box Walkthrough, malware analysis, AV evasion, and red teaming techniques. Stay updated with the latest exploits, security tools, and hacking methodologies.
@@ -197,7 +197,7 @@ defaults:
   - scope:
       path: _drafts
     values:
-      comments: false
+      comments: true
   - scope:
       path: ""
       type: tabs # see `site.collections`
