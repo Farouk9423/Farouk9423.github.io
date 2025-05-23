@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="htblogo">
   <img src="{{ '/images/HTB/Untitled.png' | relative_url }}" alt="HTB">
 </div>
-<a href="https://academy.hackthebox.com/module/details/33" target="_blank" rel="noopener noreferrer" style="font-size:20px">HTB Academy الدرس على</a>
+<a href="https://academy.hackthebox.com/module/details/75" target="_blank" rel="noopener noreferrer" style="font-size:20px">HTB Academy الدرس على</a>
 
 ---
 
