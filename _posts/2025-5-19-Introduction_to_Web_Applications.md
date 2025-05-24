@@ -6,10 +6,10 @@ author: <author_id>
 layout: post
 categories: Hack_The_Box_Academy
 tags: [Bug_Bounty_Hunter, PenetrationTesting, Security, Hacker]
-description: 
-# image:
-#   path: /path/to/image
-#   alt: image alternative text
+description: بهالدرس رح نحكي عن تطبيقات الويب وكيف بتشتغل ورح نشوفها من وجهة نظر امن المعلومات، لهيك جهز قهوتك ويلا نبلش
+image:
+  path: /images/HTB/IntroToWebApplications/0.webp
+  alt: image alternative text
 ---
 <!-- 
 <script>
@@ -258,6 +258,7 @@ username=hacker&password=123456&email=hacker@evil.com&roleid=1
 إذا ما كان في تحقق منيح بالسيرفر، الموقع رح يسجل الحساب كـ ادمن مباشرة!!<br>
 الموقع عطاك صلاحيات مو من حقك بس لأنك غشيت برقم صغير، وهالشي بسبب إنو مافي تحقق حقيقي من السيرفر على صلاحية المستخدم.
 </P>
+---
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
 <span style="font-family: 'Amiri'; color:rgb(221, 39, 78); font-size: 27px; line-height: 1.6;"><strong>مثال واقعي:</strong></span><br>
@@ -269,12 +270,27 @@ username=hacker&password=123456&email=hacker@evil.com&roleid=1
 لهيك يلا يا بطل خلينا نكمل وما نوقف هون وتذكر انو لازم تحس حالك غبي انت وعم تدرس حتى تصير عبقري🔥...
 </p>
 
-<div id="cusdis_thread"
+<!-- <div id="cusdis_thread"
   data-host="https://cusdis.com"
   data-app-id="97e0f7d5-f449-4179-bd53-afb353e73961"
   data-page-id="{{ PAGE_ID }}"
   data-page-url="{{ PAGE_URL }}"
   data-page-title="{{ PAGE_TITLE }}"
 ></div>
-<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script> -->
 
+<script src="https://giscus.app/client.js"
+        data-repo="Farouk9423/farouk9423.github.io"
+        data-repo-id="R_kgDOONQTbg"
+        data-category="General"
+        data-category-id="DIC_kwDOONQTbs4CqhWL"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="ar"
+        crossorigin="anonymous"
+        async>
+</script>
