@@ -2,7 +2,7 @@
 
 title: "Introduction to Web Applications — Arabic HackThe Box ACADEMY Walkthrough"
 date: 2025-05-19
-author: <author_id>
+author: Farouk
 layout: post
 categories: Hack_The_Box_Academy
 tags: [Bug_Bounty_Hunter, PenetrationTesting, Security, Hacker]
@@ -269,15 +269,6 @@ username=hacker&password=123456&email=hacker@evil.com&roleid=1
 لا تخاف اذا حسيت اي شي من الحكي يلي حكيناه صعب، لانو رح نحكي عليهن لقدام بالتفصيل إن كان بهاد الدرس او بالدروس القادمة، ورح تصير تلاقيهن شوربة (شوربة = بغاية السهولة😂)<br>
 لهيك يلا يا بطل خلينا نكمل وما نوقف هون وتذكر انو لازم تحس حالك غبي انت وعم تدرس حتى تصير عبقري🔥...
 </p>
-
-<!-- <div id="cusdis_thread"
-  data-host="https://cusdis.com"
-  data-app-id="97e0f7d5-f449-4179-bd53-afb353e73961"
-  data-page-id="{{ PAGE_ID }}"
-  data-page-url="{{ PAGE_URL }}"
-  data-page-title="{{ PAGE_TITLE }}"
-></div>
-<script async defer src="https://cusdis.com/js/cusdis.es.js"></script> -->
 
 <script src="https://giscus.app/client.js"
         data-repo="Farouk9423/farouk9423.github.io"

@@ -139,3 +139,20 @@ with Listener(on_press=write_to_file) as listener:
 <p dir='rtl'><strong>وهلق خبرني شو رأيك بالكود؟ وهل عندك أفكار لتطويره؟🤔</strong></p>
 
 
+---
+
+<script src="https://giscus.app/client.js"
+        data-repo="Farouk9423/farouk9423.github.io"
+        data-repo-id="R_kgDOONQTbg"
+        data-category="General"
+        data-category-id="DIC_kwDOONQTbs4CqhWL"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="ar"
+        crossorigin="anonymous"
+        async>
+</script>

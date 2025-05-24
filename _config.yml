@@ -39,10 +39,15 @@ head_custom_includes: ['head-custom.html']
 include:
   - google8904277ee4889ed1.html
 
+authors:
+  Farouk:
+    name: Farouk
+    url: https://github.com/Farouk9423
+
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Farouk Alkowatly # suggest adding your actual name
+  name: Farouk # suggest adding your actual name
   email: faroukalk50@gmail.com
   links:
     # The first element serves as the copyright owner's link

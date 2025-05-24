@@ -402,7 +402,7 @@ SELECT * FROM posts WHERE user_id=2;
 </pre>
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
-    هاد الشي بيشبه ال Dictionary بلغات متل ال Python وال PHP وال Key بكون غالباً سلسلة نصية بس ال Value ممكن تكون اي شي ممكن حتى تكون Dictionary تاني.
+    هاد الشي بيشبه ال Dictionary بلغات متل ال Python وال PHP وال Key بكون غالباً سلسلة نصية(String) بس ال Value ممكن تكون اي شي ممكن حتى تكون Dictionary تاني.
     واشهر شي عندي بال NoSQL هو ال 
     <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">MongoDB</span>
 </p>
@@ -431,7 +431,7 @@ SELECT * FROM posts WHERE user_id=2;
 <h3 id="⚪ Structured Query Language (SQL):" dir=""><span class="me-2"><strong>⚪ Structured Query Language (SQL):</strong></span><a href="#⚪ Structured Query Language (SQL):" class="anchor text-muted"></a></h3>
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
-    حكينا سابقاً انو ال SQL هي لغة بتستعمل للتعامل مع ال RDBMS متل ال MySQL أو MariaDB وبكون في اختلاف بطريقة الكتابة بين كل وحدة والتانية بس كلهن لازم يتبعوا معيار ISO لل SQL، وفينا نستخدمها للأغراض التالية:
+    حكينا سابقاً انو ال SQL هي لغة بتستعمل للتعامل مع ال RDBMS متل ال MySQL أو MariaDB وطبعا في اختلاف بطريقة الكتابة بين كل وحدة والتانية بس كلهن لازم يتبعوا معيار ISO لل SQL يعني حتى لو كان في اختلاف بطريقة الكتابة بس المنطق نفسه، وفينا نستخدمها للأغراض التالية:
 </p>
 
 <div dir="rtl">
@@ -447,7 +447,7 @@ SELECT * FROM posts WHERE user_id=2;
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
     منستخدم الأداة     
     <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">mysql</span>
-    لتسجيل الدخول والتفاعل مع قاعدة البيانات MySQL/MariaDB، منستخدم الرمز -u لإدخال اسم المستخدم والرمز -p لإدخال كلمة السر، بس طبعا ما مندخل كلمة السر مباشرة بال Command مشان ما تنحفظ بال bash_history.
+    لتسجيل الدخول والتفاعل مع قاعدة البيانات MySQL/MariaDB، منستخدم الرمز -u لإدخال اسم المستخدم والرمز -p لإدخال كلمة السر، بس طبعا ما مندخل كلمة السر مباشرة بال Command مشان ما تنحفظ بال bash_history، لهيك لأمان اكثر منترك كلمة السر فاضية وبس يطلبها مندخلها:
 </p>
 
 
@@ -478,6 +478,7 @@ SELECT * FROM posts WHERE user_id=2;
 <span class="prompt">mysql&gt;</span>
 </code></pre>
 
+
 <div class="note" dir="rtl" style=" font-size: 20px;">
   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
   ما لازم اترك مسافة بين ال -p وكلمة السر.
@@ -485,7 +486,7 @@ SELECT * FROM posts WHERE user_id=2;
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
     بالأمثلة السابقة سجلنا دخول ك superuser يعني 
-      <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">root </span> باستخدام كلمة سر، وهاد الشي بيعطيني صلاحيات لتنفيذ كل الأوامر  أما المستخدمين الآخرين فبكون عندهن صلاحيات محدودة لتنفيذ الأوامر، وحتى شوف كلشي صلاحيات عندي بستخدم أمر SHOW GRANTS ويلي رح نحكي عنو اكتر شوي تانية.<br>
+      <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">root </span> باستخدام كلمة سر، وهاد الشي بيعطيني صلاحيات لتنفيذ كل الأوامر  أما المستخدمين الآخرين فبكون عندهن صلاحيات محدودة لتنفيذ الأوامر، وحتى شوف كلشي صلاحيات عندي بستخدم أمر SHOW GRANTS ويلي رح نحكي عنو اكتر شوي تانية.<br><br>
       لما ما بحدد اي host، فهو بيتصل تلقائيا على ال 
       <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">localhost server </span>
       ومنقدر نتصل على سيرفر بعيد بتحديد ال host وال port باستخدام:
@@ -522,15 +523,17 @@ SELECT * FROM posts WHERE user_id=2;
 <span class="dim">Query OK, 1 row affected (0.02 sec)</span>
 </code></pre>
 
+
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
-    هاد الأمر بينشئ قاعدة بيانات اسمها users. ولازم ينتهي الأمر بفاصلة منقوطة (;).
+    هاد الأمر بينشئ قاعدة بيانات اسمها users. وأهم شي لا تنسى الفاصلة المنقوطة (;) عقدة المبرمجين😂<br>
+    وبعدين بعمل عرض لكل قواعد البيانات يلي موجودين عندي بأمر SHOW DATABASES ، وبس بدي اختار قاعدة البيانات يلي بدي ياها بكتب امر USE وثم اسم قاعدة البيانات، متل الموضح بالمثال:
 </p>
 
 <div class="code-title">Intro to MySQL</div>
 
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> <span class="cmd">SHOW DATABASES;</span>
-<span class="dim">
+
 +--------------------+
 | Database           |
 +--------------------+
@@ -560,8 +563,8 @@ SELECT * FROM posts WHERE user_id=2;
 - أعمدة(عمودية): بتمثل خصائص كل سجل<br>
 - تقاطع الصف مع العمود منسميه خلية<br>
 <br>
-كل جدول بينشأ بعدد ثابت من الأعمدة وكل عمود اله نوع محدد من البيانات مثل (أرقام،نصوص،تواريخ...)<br>
-مثلا بال MySQL الأنواع المشهورة هي:<br>
+كل جدول بينشأ بعدد ثابت من الأعمدة وكل عمود عنده نوع محدد من البيانات مثل (أرقام،نصوص،تواريخ...)<br>
+مثلا بال MySQL الأنواع المشهورة هي:<br><br>
 - <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">INT </span>: 
 للأرقام الصحيحة<br>
 - <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">VARCHAR(n) </span>:
@@ -618,8 +621,8 @@ SELECT * FROM posts WHERE user_id=2;
     وهيك عملنا جدول اسمه logins موجود فيه 4 اعمدة:<br>
     - <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">id </span>: 
     رقم صحيح<br>
-    - <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">password,username </span>: 
-    نصوص وبحد اقصى بقدر دخل 100 محرف واي ادخال اطول من هيك رح يسببلي خطأ<br>
+    - <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">password, username </span>: 
+    نصوص وبحد اقصى بقدر دخل 100 محرف واي ادخال اطول من هيك رح يسببلي Error<br>
     - <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">date_of_joining </span>: 
     تاريخ ووقت<br>
 
@@ -630,26 +633,27 @@ SELECT * FROM posts WHERE user_id=2;
 
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SHOW TABLES;
-<span class="dim">
+
 +-----------------+
 | Tables_in_users |
 +-----------------+
 | logins          |
 +-----------------+
+<span class="dim">
 1 row in set (0.00 sec)
 </span>
 </code></pre>
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
-  وحتى اعرض جدول للأعمدة وأنواعها الخاصة بجدول محدد بستخدم أمر 
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DESCRIBE logins;</span>
+  واذا بدي شوف الجدول مع الأعمدة وأنواعها بكتب امر
+  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DESCRIBE</span>:
 </p>
 
 <div class="code-title">Intro to MySQL</div>
 
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> DESCRIBE logins;
-<span class="dim">
+
 +-----------------+--------------+
 | Field           | Type         |
 +-----------------+--------------+
@@ -658,6 +662,7 @@ SELECT * FROM posts WHERE user_id=2;
 | password        | varchar(100) |
 | date_of_joining | date         |
 +-----------------+--------------+
+<span class="dim">
 4 rows in set (0.00 sec)
 </span>
 </code></pre>
@@ -665,9 +670,9 @@ SELECT * FROM posts WHERE user_id=2;
 <br>
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
-  لما استخدمنا أمر
+  مع امر
   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">CREATE TABLE</span>
-  فينا نحدد خصائص للأعمدة، يعني فيني خلي ال id يزيد تلقائيا كل مرة باستخدام 
+  منقدر نحدد خصائص للأعمدة، يعني فيني خلي ال id يزيد تلقائيا كل مرة باستخدام 
   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">AUTO_INCREMENT </span> وهيك بضمن انو ال id كل مرة بزيد واحد بشكل تلقائي:
 </p>
 
@@ -691,11 +696,11 @@ SELECT * FROM posts WHERE user_id=2;
 <pre class="code-block"><code>
   <span class="field">id</span> <span class="type">INT</span> <span class="constraint">NOT NULL</span> <span class="directive">AUTO_INCREMENT</span>,
 </code></pre>
-
+<br>
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
-  بالنسبة ل
+  وبقدر كمان ضيف 
   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">NOT NULL</span> 
-  بضمن انو ممنوع يترك اي عمود فاضي واذا ضل فاضي بيطلعلي ايرور، وكمان فيني استخدم امر
+  وهيك بضمن انو ممنوع اترك اي عمود فاضي واذا ضل فاضي بيطلع ايرور بوجهي، وكمان فيني استخدم امر
   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">UNIQE</span>
   حتى اضمن انو القيمة دائما فريدة ومو مستخدمة قبل، يعني اذا استخدمتها مع عمود ال username، فهيك بضمن انو ماعندي تنين بنفس الأسم:
 </p>
@@ -711,7 +716,7 @@ SELECT * FROM posts WHERE user_id=2;
   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DEFAULT</span>
   وبستخدمها حتى حدد القيمة الأفتراضية، يعني مثلا بعمود 
   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">date_of_joining</span>
-  فينا نحط القيمة الافتراضية هي Now() وال MySQL بتحولها للوقت والتاريخ الحالي:
+  فينا نحط القيمة الافتراضية هي Now() وال MySQL بتحولها للوقت والتاريخ الحالي وقت التنفيذ:
 </p>
 
 <div class="code-title">SQL</div>
@@ -723,7 +728,7 @@ SELECT * FROM posts WHERE user_id=2;
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
   آخر واهم خاصية عندي هي ال 
   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">PRIMARY KEY</span>
-  ويلي بستخدمه لتحديد كل صف بشكل فريد، يعني مافي سجلين بالجدول بكون الهم نفس قيمة ال Primary Key، والهدف منه اني اقدر ميز كل سجل عن التاني بسهولة متل ماشرحنا قبل
+  ويلي بستخدمه لتحديد كل صف بشكل فريد، يعني مافي سجلين بالجدول بكون الهم نفس قيمة ال Primary Key، والهدف منه اني اقدر ميز كل سجل عن التاني بسهولة متل ماشرحنا قبل عن ربط الجداول، ورح نشوف هالشي بالأمثلة لقدام
 </p>
 
 <div class="code-title">SQL</div>
@@ -768,7 +773,7 @@ SELECT * FROM posts WHERE user_id=2;
 </div>
 
 <p dir="" style="color: white; font-size: 22px; line-height: 1.6;">
-  <strong>Questions:</strong>
+  <strong>HTB Questions:</strong>
 </p>
 Answer the question(s) below to complete this Section and earn cubes!<br><br>
 Connect to the database using the MySQL client from the command line. Use the 'show databases;' command to list databases in the DBMS. What is the name of the first database? 
@@ -789,13 +794,16 @@ Connect to the database using the MySQL client from the command line. Use the 's
 </div>
 ---
 <h2 id="📌 SQL Statements" dir=""><span class="me-2"><strong>📌 SQL Statements</strong></span><a href="#📌 SQL Statements" class="anchor text-muted"></a></h2>
+<p dir="rtl" style="font-size: 22px; line-height: 1.6;">
+بالقسم هاد رح نحكي عن اوامر SQL ونشوف كيف بدنا ندخل معلومات على الجداول او نحذف او حتى نعدل، كل شوي عم تصير الدروس اهم واهم لهيك غسل وجهك وركز منيح يابطل🔥
+</p>
 ---
 <h3 id="🟡 INSERT Statement:" dir=""><span class="me-2"><strong>🟡 INSERT Statement:</strong></span><a href="#🟡 INSERT Statement:" class="anchor text-muted"></a></h3>
 
 <p dir="rtl" style="font-size: 22px; line-height: 1.6;">
-  اتعلمنا قبل كيف نستخدم اداة ال mysql وانشأنا فيها قواعد بيانات وجداول، خلينا نشوف هلق أمر مهم من أوامر ال SQL ويلي هو
+  اتعلمنا قبل كيف نستخدم اداة ال mysql وانشأنا قواعد بيانات وجداول، خلينا نشوف هلق أمر مهم من أوامر ال SQL ويلي هو
   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">INSERT</span>.<br>
-  منستخدم هالأمر لنضيف صفوف جديدة بجدول عندي ياه، وهلق بالمثال بتفهم عليي اكتر..
+  بعد ما انشأنا قاعدة البيانات وانشأنا جداول داخلها، صار الوقت لنعبي معلومات داخل هالجداول، امر INSERT بسمحلي ضيف صفوف جديدة بالجداول يلي عندي بالشكل التالي:
 </p>
 
 <div class="code-title">SQL</div>
@@ -808,7 +816,7 @@ Query OK, 1 row affected (0.00 sec)
 </code></pre>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
-  بهاد المثال ضفنا سطر جديد على جدول logins وحطينا البيانات الخاصة بكل عمود بالتريب.<br>
+  بهاد المثال ضفنا سطر جديد على جدول logins وحطينا البيانات الخاصة بكل عمود بالتريب.<br><br>
   طيب بلكي عندي اعمدة بدي اتركهن فاضيين وبدي حط مثلا بس ال username , password؟<br>
   ساعتها رح اكتب الأمر بهالطريقة:🫠
 </p>
@@ -842,7 +850,7 @@ Records: 2  Duplicates: 0  Warnings: 0
 
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
-  هون نحنا بس ادخلنا ال username , password واتخطينا ال id لانو رح يتولد تلقائياً بسبب ال AUTO_INCREMENT، اما ال date_of_joining فرح تاخد القيمة الافتراضية
+  هون نحنا بس ادخلنا ال username , password واتخطينا ال id لانو رح يتولد تلقائياً بسبب ال AUTO_INCREMENT، اما ال date_of_joining فرح تاخد القيمة الافتراضية يلي هي now
 </p>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
@@ -853,9 +861,9 @@ Records: 2  Duplicates: 0  Warnings: 0
 <h3 id="🟡 SELECT Statement:" dir=""><span class="me-2"><strong>🟡 SELECT Statement:</strong></span><a href="#🟡 SELECT Statement:" class="anchor text-muted"></a></h3>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
-  بعد ما استخدمنا امر INSERT وضفنا البيانات عالجداول، صار وقت نشوف كيف بدنا نستعرض هالبيانات ونشوفها، ورح نستخدم امر
+  بعد ما استخدمنا امر INSERT وضفنا البيانات عالجداول، صار وقت نشوف كيف بدنا نستعرض هالبيانات ونشوفها يعني مو معقول خزن البيانات بدون ما ارجع استخدمها🌚، لهيك لنرجع نعرض البيانات يلي بالجدول رح نستخدم امر
 <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">SELECT</span>
-، والأمر هاد من اهم اوامر SQL ومنستخدمه مشان نستخرج البيانات من الجداول وفي استخدامات تانية رح نحكي عنها بعدين.<br>
+، والأمر هاد من اهم اوامر SQL ورح نعرف ليش بعدين.<br><br>
 بس بشكل عام اذا بدك تشوف البيانات يلي مخزنها بالجداول فرح تستخدم الأمر بهالطريقة:
 
 </p>
@@ -1345,11 +1353,18 @@ SELECT * FROM employees WHERE first_name like 'Bar%' AND hire_date = '1990-01-01
 </div>
 ---
 
-<div id="cusdis_thread"
-  data-host="https://cusdis.com"
-  data-app-id="97e0f7d5-f449-4179-bd53-afb353e73961"
-  data-page-id="{{ PAGE_ID }}"
-  data-page-url="{{ PAGE_URL }}"
-  data-page-title="{{ PAGE_TITLE }}"
-></div>
-<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+<script src="https://giscus.app/client.js"
+        data-repo="Farouk9423/farouk9423.github.io"
+        data-repo-id="R_kgDOONQTbg"
+        data-category="General"
+        data-category-id="DIC_kwDOONQTbs4CqhWL"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="ar"
+        crossorigin="anonymous"
+        async>
+</script>
