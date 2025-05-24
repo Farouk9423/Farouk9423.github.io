@@ -1341,5 +1341,11 @@ SELECT * FROM employees WHERE first_name like 'Bar%' AND hire_date = '1990-01-01
 </div>
 ---
 
-
-
+<div id="cusdis_thread"
+  data-host="https://cusdis.com"
+  data-app-id="97e0f7d5-f449-4179-bd53-afb353e73961"
+  data-page-id="{{ PAGE_ID }}"
+  data-page-url="{{ PAGE_URL }}"
+  data-page-title="{{ PAGE_TITLE }}"
+></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>

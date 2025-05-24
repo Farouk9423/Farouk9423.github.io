@@ -6,7 +6,10 @@ author: <author_id>
 layout: post
 categories: Hack_The_Box_Academy
 tags: [Bug_Bounty_Hunter, PenetrationTesting, Security, Hacker]
-description: rtl
+description: 
+# image:
+#   path: /path/to/image
+#   alt: image alternative text
 ---
 <!-- 
 <script>
@@ -266,22 +269,12 @@ username=hacker&password=123456&email=hacker@evil.com&roleid=1
 لهيك يلا يا بطل خلينا نكمل وما نوقف هون وتذكر انو لازم تحس حالك غبي انت وعم تدرس حتى تصير عبقري🔥...
 </p>
 
-<style>
-iframe[src*="cusdis.com"] {
-  border: none;
-  width: 100% !important;
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-}
-
-</style>
-
 <div id="cusdis_thread"
   data-host="https://cusdis.com"
   data-app-id="97e0f7d5-f449-4179-bd53-afb353e73961"
-  data-page-id="{{ page.slug | default: page.url | slugify }}"
-  data-page-url="{{ site.url }}{{ page.url }}"
-  data-page-title="{{ page.title }}">
-</div>
+  data-page-id="{{ PAGE_ID }}"
+  data-page-url="{{ PAGE_URL }}"
+  data-page-title="{{ PAGE_TITLE }}"
+></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
