@@ -2,29 +2,16 @@
 
 title: "SQL Injection Fundamentals — Arabic HackThe Box ACADEMY Walkthrough"
 date: 2025-05-14
-authors: "Farouk"
+author: <author_id>
 layout: post
 categories: Hack_The_Box_Academy
 tags: [SQL, PenetrationTesting, Security, Hacker]
 direction: rtl
 image:
   path: /images/HTB/0.webp
-  alt: image alternative tex
+  alt: 
 description: قواعد البيانات جزء مهم من بنية تطبيقات الويب،  وبدرس اليوم رح نتعلم عن قواعد البيانات وكيف نستغل الحماية الضعيفة فيها.
 ---
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // البحث عن العنصر الذي يحتوي على "By"
-    let authorElement = document.querySelector("span em");
-
-    // التأكد أن العنصر موجود
-    if (authorElement) {
-        authorElement.textContent = "Farouk"; // وضع الاسم داخل الوسم <em>
-    }
-});
-</script>
 
 <style>
     h1, h2, h3, h4, h5, h6, p, li {
@@ -143,9 +130,11 @@ document.addEventListener("DOMContentLoaded", function () {
 Select * FROM employees;
 ```
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
   طبيعي اذا مافهمت شي لسا رح نشرح التعليمات كلها بالتفصيل😅
 </div>
+
+
 
 <div class="htblogo">
   <img src="{{ '/images/HTB/1.webp' | relative_url }}" alt="HTB">
@@ -166,7 +155,7 @@ Select * FROM employees;
       بصير عندي ال SQL Injection لما المستخدم بحط مدخلات بتغير بال query يلي بدو يبعتها الويب لقاعدة البيانات وهالشي بخلي المستخدم ينفذ quries غير يلي لازم تتنفذ متل ماشرحنا سابقاً اذا شخص غير بال query وعرض يوزرات وكلمات سر كل المستخدمين.<br><br>
       حتى نفذ ال SQL Injection، لازم اول شي حاول ادخل مدخلات SQL حتى غير بالمنطق تبع ال query وما يتم تنفيذ مجرد ال query يلي بدو ال Web Application ينفذها.<br>
       وحدة من الطرق البسيطة هي ادخال single quote (‘) أو double quote (“)، وهالشي عشان اتأكد اذا عم يتم تنفيذ اي شي بدخله بال query مباشرة ولا عم يتم تنظيفه.<br>
-      <span style="font-family: 'Amiri'; color:rgb(221, 39, 78); font-size: 27px; line-height: 1.6;"><strong>مثال:</strong></span><br>
+      <span style="  color:rgb(221, 39, 78); font-size: 27px; line-height: 1.6;"><strong>مثال:</strong></span><br>
       خلينا نتخيل انو عندي صفحة تسجيل دخول عادية، لما الشخص يدخل الاسم وكلمة السر بصير هيك عندي بال Backend:
       </p>
 
@@ -188,7 +177,7 @@ Select * FROM employees;
       وهالشي ممكن باستخدام شي اسمو stacked queries او using Union queries رح نحكي عنهن بشكل اوسع لاحقاً ، وبالنهاية حتى اقدر جيب المعلومات من هالاستعلام وشوفها لازم استدعيها بال Frontend مثلا.
 </p>
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
 لحد الآن عم نحكي بالمقدمة ونشرح ال Methodology بشكل عام ولقدام رح نشوف كيف منطبق كل خطوة مع امثلة. 
 </div>
 ---
@@ -236,14 +225,14 @@ Select * FROM employees;
 </div>
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
-    المقصود من الجدول انو ال DBMS عنده كتير خصائص منها:<br> <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Concurrency</span> ومعناها انو لما اكتر من شخص ينفذ اوامر على قعادة البيانات بنفس الوقت، بتضمن ال DBMS انو يتنفذ هاد الشي بدون ما تتخربط البيانات او يصير عندي خسارة الها.<br>
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Consistency</span>
+    المقصود من الجدول انو ال DBMS عنده كتير خصائص منها:<br> <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Concurrency</span> ومعناها انو لما اكتر من شخص ينفذ اوامر على قعادة البيانات بنفس الوقت، بتضمن ال DBMS انو يتنفذ هاد الشي بدون ما تتخربط البيانات او يصير عندي خسارة الها.<br>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Consistency</span>
     ومقصود فيها انو ال DBMS بيتأكد من البيانات انو تكون صالحة ومتسقة بكل قاعدة البيانات.<br>
-     <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Security</span>
+     <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Security</span>
      بيتأكد أنو عندي ضوابط امنية من خلال التأكد من صلاحيات المستخدم والعديد من الأمور.<br>
-     <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Reliability</span>
+     <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Reliability</span>
     بيسمحلك تعمل نسخة من قاعدة البيانات وترجعلها دائما اذا صار اختراق الله لايقدر او فقدت بياناتك.<br>
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Structured Query Language</span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Structured Query Language</span>
     ال SQL بيجعل التفاعل ابسط بين المستخدم وال Database.
 </p>
 ---
@@ -259,9 +248,9 @@ Select * FROM employees;
 
 <p dir="rtl" style=" font-size: 20px; line-height: 1.6;">
 <br>
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">البنية الأولى:</span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">البنية الأولى:</span>
     اسمها ال Frontend بتتكون عادة من الجانب الخاص بالمستخدم، متل مواقع الويب والواجهات الرسومية او حتى الصور والألوان، يعني حرفيا كلشي بشوفه المستخدم، وبتكون غالباً تفاعلية يعني فيها صفحة تسجيل دخول ومكان للتعليقات، والبيانات يلي مندخلها بتنتقل للبنية التانية عن طريق شي اسمو API أو Requests.<br><br>
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">البنية الثانية:</span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">البنية الثانية:</span>
     اسمها ال Backend، وهي المسؤولة عن تفسير البيانات يلي بتجيني من الطبقة الاولى وتجهيزها بالشكل يلي بيقبله ال DBMS، وبتستخدم هالطبقة مكتبات وبرامج حسب نوع ال DBMS يلي عم تتعامل معو.<br><br>
     بعدين بيستلم ال DBMS الأوامر من الطبقة الثانية وبينفذ الأوامر المطلوبة متل ادخال بيانات او تعديل بيانات او حتى حذف بيانات.<br>
     وبرجع ال DBMS البيانات المطلوبة او الاخطاء يلي بتطلع عندي اذا كان في queries غير صحيحة.<br>
@@ -272,7 +261,7 @@ Select * FROM employees;
 
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
 ممكن اني ضيف ال Web Application وال DBMS على نفس السيرفر بس عادة بتنحط ال Database يلي فيها كمية كبيرة من المعلومات وفيها مستخدمين كتير على سيرفر لحال مشان يكون عندي قابلية لزيادة سعتها وتعطيني اداء افضل.
 </div>
 ---
@@ -280,18 +269,18 @@ Select * FROM employees;
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
     حكينا سابقا انو عنا نوعين اساسيين لل Databases، ال
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Relational Databases</span> وال
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Non-Relational Databases</span>، 
-    بالنسبة لل <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Relational Databases</span> فهي بتستخدم لغة SQL فقط اما ال <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Non-Relational Databases</span> فبتستخدم كذا طريقة للتواصل.<br>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Relational Databases</span> وال
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Non-Relational Databases</span>، 
+    بالنسبة لل <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Relational Databases</span> فهي بتستخدم لغة SQL فقط اما ال <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Non-Relational Databases</span> فبتستخدم كذا طريقة للتواصل.<br>
     وهلق رح نحكي عنهن اكتر ونعرف الفروقات بيناتهم.
 </p>
 ---
 <h3 id="🟣 Relational Databases:" dir=""><span class="me-2"><strong>🟣 Relational Databases:</strong></span><a href="#🟣 Relational Databases:" class="anchor text-muted"></a></h3>
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
-    ال <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Relational Databases</span> هي النوع المنتشر والمتداول اكتر، بتستخدم شي اسمو <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Schema</span> وهي متل قالب بحدد شكل البيانات جوا قاعدة البيانات.<br><br>
+    ال <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Relational Databases</span> هي النوع المنتشر والمتداول اكتر، بتستخدم شي اسمو <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Schema</span> وهي متل قالب بحدد شكل البيانات جوا قاعدة البيانات.<br><br>
     خلينا نتخيل الموضوع متل شركة بتبيع منتجات، فمشان تنظم معلوماتها رح تكون بحاجة لمعلومات من الزباين متل: مين الزبون وشو المنتجات يلي اشتراها وقديش دفع...<br>
-    فال <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Schema</span> هون بتكون متل الخريطة يلي بتنظم كل هالمعلومات جوا جداول، يعني رح يكون عندي جدول للزباين وجدول للمنتجات يلي بتبيعهن الشركة ورح يكون فيه اسم المنتج وعدد القطع الموجودة ورح يكون في جدول للمشتريات موجود فيه مين الزبون يلي اشترى وقديش دفع وكيف دفع والخ...<br><br>
+    فال <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Schema</span> هون بتكون متل الخريطة يلي بتنظم كل هالمعلومات جوا جداول، يعني رح يكون عندي جدول للزباين وجدول للمنتجات يلي بتبيعهن الشركة ورح يكون فيه اسم المنتج وعدد القطع الموجودة ورح يكون في جدول للمشتريات موجود فيه مين الزبون يلي اشترى وقديش دفع وكيف دفع والخ...<br><br>
     وهالصورة بتوضح الجداول، عندي مثلا جدول اسمه Customer، بداخله اعمدة متل CustomerID ونوعه Integer, FirstName ونوعه String...
     </p>
 
@@ -304,18 +293,18 @@ Select * FROM employees;
     بترتبط الجداول ببعضها عن طريق شي اسمو Keys بتساعدني اني اوصل بسرعة للبيانات او بتعطيني ملخص عنها، وكل جدول فيه Key متل رقم تعريفي بيربطه بجدول تاني.<br>
     مثلا جدول الزباين فيه اعمدة متل CustomerID(رقم تعريفي لكل زبون), FirstName, Address... وجدول المنتجات فيه اعمدة متل ProductID(رقم تعريفي لكل منتج), ProdactName, Price...<br><br>
     هلق لما بجي بدي اعمل جدول ال Orders بكفي حط فيه ال CustomerID وال ProductID وال Quantity ويلي هي الكمية، وهو من جدول ال Customers بجيب كل تفاصيل الزبون ومن جدول ال Products بجيب كل تفاصيل المنتج.<br><br>
-    ومشان نربط هدول الجداول مع بعض منستخدم <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Relational Database Management System ( RDBMS )</span>
+    ومشان نربط هدول الجداول مع بعض منستخدم <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Relational Database Management System ( RDBMS )</span>
     وهو مفهوم بيطبق من انواع كبيرة من قواعد البيانات متل MySQL, PostgreSQL, Microsoft Access وهالشي بساعدني اربط الجداول ببعض من خلال ال Keys بسهولة، والشركات صارت تحب تستخدم ال RDBMS لانه سهل الواحد يتعلمه ويستخدمه.<br><br>
-  <span style="font-family: 'Amiri'; color:rgb(221, 39, 78); font-size: 27px; line-height: 1.6;"><strong>مثال عملي:</strong></span><br>
+  <span style="  color:rgb(221, 39, 78); font-size: 27px; line-height: 1.6;"><strong>مثال عملي:</strong></span><br>
     عندي جدول اسمه
-     <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Users</span> فيه اعمدة متل:
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">id</span>,
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">username</span>, 
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">firstname</span>, 
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">lastname</span>.<br>
+     <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Users</span> فيه اعمدة متل:
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">id</span>,
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">username</span>, 
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">firstname</span>, 
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">lastname</span>.<br>
     وجدول ال
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Posts</span> فيه منشورات المستخدمين مع التاريخ وفيه عمود اسمه <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">user_id</span> موجود فيه رقم ال <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">id</span> للمستخدم مع ال Post تبعه.<br>
-    وهيك اذا بدنا نجيب  كل المنشورات لمستخدم معين منربط ال <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">id</span> تبع المستخدم مع ال <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">user_id</span> وهيك منجيب كلشي معلومات بدون تكرار😎<br><br>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Posts</span> فيه منشورات المستخدمين مع التاريخ وفيه عمود اسمه <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">user_id</span> موجود فيه رقم ال <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">id</span> للمستخدم مع ال Post تبعه.<br>
+    وهيك اذا بدنا نجيب  كل المنشورات لمستخدم معين منربط ال <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">id</span> تبع المستخدم مع ال <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">user_id</span> وهيك منجيب كلشي معلومات بدون تكرار😎<br><br>
     مثال عن ال query يلي بستخدمها لتنفيذ هالشي:
 </p>
 ```sql
@@ -332,14 +321,14 @@ SELECT * FROM posts WHERE user_id=2;
 </p>
 
 <div class="note" dir="rtl" style="font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
 بسمي العلاقة بين الجداول جوا قاعدة البيانات ب Schema
 </div>
 ---
 <h3 id="🟣 Non-relational Databases:" dir=""><span class="me-2"><strong>🟣 Non-relational Databases:</strong></span><a href="#🟣 Non-relational Databases:" class="anchor text-muted"></a></h3>
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
-    بالنسبة لل Non-relational Databases ويلي بقول عليها كمان <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">NoSQL</span> مابتستخدم الجداول ولا الاعمدة ولا ال Keys ولا حتى ال Schema.
+    بالنسبة لل Non-relational Databases ويلي بقول عليها كمان <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">NoSQL</span> مابتستخدم الجداول ولا الاعمدة ولا ال Keys ولا حتى ال Schema.
     وبدال كل هالأمور بتخزن البيانات بأكتر من طريقة حسب انواع البيانات مشان هيك هي كتير مرنة وبتكون قابلة للتوسع ومناسبة للبيانات يلي مو منظمة بشكل واضح.<br><br>
     انواع التخزين بال NoSQL:<br>
 </p>
@@ -351,7 +340,7 @@ SELECT * FROM posts WHERE user_id=2;
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
     كل وحدة من هالأنواع بتخزن البيانات بطريقة شكل يعني على سبيل المثال ال 
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Key-Value</span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Key-Value</span>
     بتنحفظ البيانات بشكل أزواج (Key-Value) بصيغة JSON او XML
 </p>
 
@@ -404,20 +393,20 @@ SELECT * FROM posts WHERE user_id=2;
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
     هاد الشي بيشبه ال Dictionary بلغات متل ال Python وال PHP وال Key بكون غالباً سلسلة نصية(String) بس ال Value ممكن تكون اي شي ممكن حتى تكون Dictionary تاني.
     واشهر شي عندي بال NoSQL هو ال 
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">MongoDB</span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">MongoDB</span>
 </p>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
     ال 
     Non-relational Databases الها طريقة تانية تماماً لل Injection بتختلف عن ال SQL Injection، بالنسبة لل NoSQL Injection رح نحكي عنو بمرات جاية لحال إن شاء الله.
 </div>
 ---
 <p dir="rtl" style=" font-size: 23px; line-height: 1.6;">
 <strong>
-وهيك منكون خلصنا المقدمة واتعلمنا شوي عن قواعد البيانات بشكل عام واخدنا لمحة بسيطة عن ال SQL Injection، وإن شاء الله رح نتوسع اكتر ورح نبلش ندخل ونفهم قواعد البيانات بشكل اكبر.<br>
-كملو يا وحوش🔥✨
-</strong>
+وهيك خلصنا قسم جديد وقربنا خطوة🔥<br>
+اتعلمنا عن انواع قواعد البيانات والفرق بيناتهن ولقدام رح نفهمهم اكتر ونتسحن اكتر، لهيك خليك مبسوط بالتطور يلي عملته🫡<br>
+وكمل يا وحش✨</strong>
 </p>
 ---
 <h2 id="MySQL" dir=""><span class="me-2"><strong>MySQL</strong></span><a href="#MySQL" class="anchor text-muted"></a></h2>
@@ -446,7 +435,7 @@ SELECT * FROM posts WHERE user_id=2;
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
     منستخدم الأداة     
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">mysql</span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">mysql</span>
     لتسجيل الدخول والتفاعل مع قاعدة البيانات MySQL/MariaDB، منستخدم الرمز -u لإدخال اسم المستخدم والرمز -p لإدخال كلمة السر، بس طبعا ما مندخل كلمة السر مباشرة بال Command مشان ما تنحفظ بال bash_history، لهيك لأمان اكثر منترك كلمة السر فاضية وبس يطلبها مندخلها:
 </p>
 
@@ -480,15 +469,15 @@ SELECT * FROM posts WHERE user_id=2;
 
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
   ما لازم اترك مسافة بين ال -p وكلمة السر.
 </div>
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
     بالأمثلة السابقة سجلنا دخول ك superuser يعني 
-      <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">root </span> باستخدام كلمة سر، وهاد الشي بيعطيني صلاحيات لتنفيذ كل الأوامر  أما المستخدمين الآخرين فبكون عندهن صلاحيات محدودة لتنفيذ الأوامر، وحتى شوف كلشي صلاحيات عندي بستخدم أمر SHOW GRANTS ويلي رح نحكي عنو اكتر شوي تانية.<br><br>
+      <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">root </span> باستخدام كلمة سر، وهاد الشي بيعطيني صلاحيات لتنفيذ كل الأوامر  أما المستخدمين الآخرين فبكون عندهن صلاحيات محدودة لتنفيذ الأوامر، وحتى شوف كلشي صلاحيات عندي بستخدم أمر SHOW GRANTS ويلي رح نحكي عنو اكتر شوي تانية.<br><br>
       لما ما بحدد اي host، فهو بيتصل تلقائيا على ال 
-      <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">localhost server </span>
+      <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">localhost server </span>
       ومنقدر نتصل على سيرفر بعيد بتحديد ال host وال port باستخدام:
 </p>
 
@@ -504,7 +493,7 @@ SELECT * FROM posts WHERE user_id=2;
 </code></pre>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
   ال Port الافتراضي ل MySQL/MariaDB هو 3306 بس ممكن يتغير من الأعدادات ل Port تاني لهيك بحدد ال Port بالرمز -P على عكس كلمة السر يلي بحددها بالرمز -p.
 </div>
 ---
@@ -513,7 +502,7 @@ SELECT * FROM posts WHERE user_id=2;
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
     بعد ما تسجل دخول لقاعدة البيانات باستخدام اداة mysql، منقدر نستخدم اوامر SQL للتعامل مع قاعدة البيانات مثلا:<br>
     مشان ننشئ قاعدة بيانات جديدة في MySQL منستخدم امر 
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">CREATE DATABASE </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">CREATE DATABASE </span>
 </p>
 
 <div class="code-title">Intro to MySQL</div>
@@ -549,7 +538,7 @@ SELECT * FROM posts WHERE user_id=2;
 </code></pre>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
     
 اوامر ال SQL غير حساسة لحالة الأحرف، يعني فيني استخدم use users او USE users <br>
 بس اسم قاعدة البيانات حساس لحالة الأحرف يعني USE USERS غير USE users
@@ -565,15 +554,15 @@ SELECT * FROM posts WHERE user_id=2;
 <br>
 كل جدول بينشأ بعدد ثابت من الأعمدة وكل عمود عنده نوع محدد من البيانات مثل (أرقام،نصوص،تواريخ...)<br>
 مثلا بال MySQL الأنواع المشهورة هي:<br><br>
-- <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">INT </span>: 
+- <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">INT </span>: 
 للأرقام الصحيحة<br>
-- <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">VARCHAR(n) </span>:
+- <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">VARCHAR(n) </span>:
 للنصوص والحرف n بحدد اكبر عدد ممكن دخله من المحارف.<br>
-- <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DATETIME </span>:
+- <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DATETIME </span>:
 للتواريخ والوقت. <br>
 <br>
 حتى انشئ جدول بستخدم امر 
-<span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">CREATE TABLE</span>:<br>
+<span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">CREATE TABLE</span>:<br>
 </p>
 
 <style>
@@ -619,14 +608,14 @@ SELECT * FROM posts WHERE user_id=2;
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
     وهيك عملنا جدول اسمه logins موجود فيه 4 اعمدة:<br>
-    - <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">id </span>: 
+    - <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">id </span>: 
     رقم صحيح<br>
-    - <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">password, username </span>: 
+    - <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">password, username </span>: 
     نصوص وبحد اقصى بقدر دخل 100 محرف واي ادخال اطول من هيك رح يسببلي Error<br>
-    - <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">date_of_joining </span>: 
+    - <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">date_of_joining </span>: 
     تاريخ ووقت<br>
 
-    وفيني اعرض قائمة بالجداول الموجودة عندي بالأمر <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">SHOW TABLES </span>
+    وفيني اعرض قائمة بالجداول الموجودة عندي بالأمر <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">SHOW TABLES </span>
 </p>
 
 <div class="code-title">Intro to MySQL</div>
@@ -646,7 +635,7 @@ SELECT * FROM posts WHERE user_id=2;
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
   واذا بدي شوف الجدول مع الأعمدة وأنواعها بكتب امر
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DESCRIBE</span>:
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DESCRIBE</span>:
 </p>
 
 <div class="code-title">Intro to MySQL</div>
@@ -671,9 +660,9 @@ SELECT * FROM posts WHERE user_id=2;
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
   مع امر
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">CREATE TABLE</span>
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">CREATE TABLE</span>
   منقدر نحدد خصائص للأعمدة، يعني فيني خلي ال id يزيد تلقائيا كل مرة باستخدام 
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">AUTO_INCREMENT </span> وهيك بضمن انو ال id كل مرة بزيد واحد بشكل تلقائي:
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">AUTO_INCREMENT </span> وهيك بضمن انو ال id كل مرة بزيد واحد بشكل تلقائي:
 </p>
 
 <div class="code-title">SQL</div>
@@ -699,9 +688,9 @@ SELECT * FROM posts WHERE user_id=2;
 <br>
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
   وبقدر كمان ضيف 
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">NOT NULL</span> 
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">NOT NULL</span> 
   وهيك بضمن انو ممنوع اترك اي عمود فاضي واذا ضل فاضي بيطلع ايرور بوجهي، وكمان فيني استخدم امر
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">UNIQE</span>
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">UNIQE</span>
   حتى اضمن انو القيمة دائما فريدة ومو مستخدمة قبل، يعني اذا استخدمتها مع عمود ال username، فهيك بضمن انو ماعندي تنين بنفس الأسم:
 </p>
 
@@ -713,9 +702,9 @@ SELECT * FROM posts WHERE user_id=2;
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
   وكمان عندي ال
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DEFAULT</span>
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DEFAULT</span>
   وبستخدمها حتى حدد القيمة الأفتراضية، يعني مثلا بعمود 
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">date_of_joining</span>
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">date_of_joining</span>
   فينا نحط القيمة الافتراضية هي Now() وال MySQL بتحولها للوقت والتاريخ الحالي وقت التنفيذ:
 </p>
 
@@ -727,7 +716,7 @@ SELECT * FROM posts WHERE user_id=2;
 
 <p dir="rtl" style="font-size: 20px; line-height: 1.6;">
   آخر واهم خاصية عندي هي ال 
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">PRIMARY KEY</span>
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">PRIMARY KEY</span>
   ويلي بستخدمه لتحديد كل صف بشكل فريد، يعني مافي سجلين بالجدول بكون الهم نفس قيمة ال Primary Key، والهدف منه اني اقدر ميز كل سجل عن التاني بسهولة متل ماشرحنا قبل عن ربط الجداول، ورح نشوف هالشي بالأمثلة لقدام
 </p>
 
@@ -768,16 +757,17 @@ SELECT * FROM posts WHERE user_id=2;
 </code></pre>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
 السيرفرات (مثل Apache/MySQL) بتحتاج 10-15 ثانية عشان تبدأ، فانتظر شوية قبل ما تجرب الأوامر.
 </div>
 
 <p dir="" style="color: white; font-size: 22px; line-height: 1.6;">
   <strong>HTB Questions:</strong>
 </p>
+
+<p style="font-size: 20px; line-height: 1.6;">
 Answer the question(s) below to complete this Section and earn cubes!<br><br>
 Connect to the database using the MySQL client from the command line. Use the 'show databases;' command to list databases in the DBMS. What is the name of the first database? 
-<p dir="rtl" style="font-size: 20px; line-height: 1.6;">
   
 </p>
 
@@ -802,7 +792,7 @@ Connect to the database using the MySQL client from the command line. Use the 's
 
 <p dir="rtl" style="font-size: 22px; line-height: 1.6;">
   اتعلمنا قبل كيف نستخدم اداة ال mysql وانشأنا قواعد بيانات وجداول، خلينا نشوف هلق أمر مهم من أوامر ال SQL ويلي هو
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">INSERT</span>.<br>
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">INSERT</span>.<br>
   بعد ما انشأنا قاعدة البيانات وانشأنا جداول داخلها، صار الوقت لنعبي معلومات داخل هالجداول، امر INSERT بسمحلي ضيف صفوف جديدة بالجداول يلي عندي بالشكل التالي:
 </p>
 
@@ -830,12 +820,12 @@ Query OK, 1 row affected (0.00 sec)
 </code></pre>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
   اني اترك الأعمدة يلي هي "NOT NULL" فاضية رح يسببلي Errors
 </div>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
   بتقدر تضيف اكتر من سطر ورا بعض باستخدام ال ,
 </div>
 
@@ -854,17 +844,17 @@ Records: 2  Duplicates: 0  Warnings: 0
 </p>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
 بالأمثلة ادخلنا كلمة السر بشكل نص وهاد الشي على ارض الواقع مو آمن ابدا، الافضل اني اعملها Hash وهو نوع من التشفير بعدين احفظها.
 </div>
 ---
 <h3 id="🟡 SELECT Statement:" dir=""><span class="me-2"><strong>🟡 SELECT Statement:</strong></span><a href="#🟡 SELECT Statement:" class="anchor text-muted"></a></h3>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
-  بعد ما استخدمنا امر INSERT وضفنا البيانات عالجداول، صار وقت نشوف كيف بدنا نستعرض هالبيانات ونشوفها يعني مو معقول خزن البيانات بدون ما ارجع استخدمها🌚، لهيك لنرجع نعرض البيانات يلي بالجدول رح نستخدم امر
-<span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">SELECT</span>
+  بعد ما استخدمنا امر INSERT وضفنا البيانات عالجداول، صار وقت نشوف كيف بدنا نستعرض هالبيانات ونشوفها يعني مو معقول خزن البيانات بدون ما ارجع شوفها🌚، لهيك لنرجع نعرض البيانات يلي بالجدول رح نستخدم امر
+<span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">SELECT</span>
 ، والأمر هاد من اهم اوامر SQL ورح نعرف ليش بعدين.<br><br>
-بس بشكل عام اذا بدك تشوف البيانات يلي مخزنها بالجداول فرح تستخدم الأمر بهالطريقة:
+بس بشكل عام اذا بدك تشوف البيانات يلي مخزنها بالجداول رح تستخدم الأمر بهالطريقة:
 
 </p>
 
@@ -876,7 +866,7 @@ Records: 2  Duplicates: 0  Warnings: 0
 </code></pre>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
-  بأمر <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">SELECT</span> حددنا متل ماحكينا انو بدنا نجيب البيانات، اما رمز النجمة * فمعناه انو جبلي كل الأعمدة من هاد الجدول.<br><br>
+  أمر <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">SELECT</span> ليقرأ البيانات، اما رمز النجمة * فمعناه انو اقرأ كل الأعمدة من هاد الجدول.<br><br>
   طيب لنفرض انو مابدي كل الأعمدة وبدي عدد محدد من الأعمدة فبحددهن بدال النجمة:<br>
 </p>
 
@@ -892,7 +882,6 @@ Records: 2  Duplicates: 0  Warnings: 0
 
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins;
-<span class="dim">
 +----+---------------+------------+---------------------+
 | id | username      | password   | date_of_joining     |
 +----+---------------+------------+---------------------+
@@ -901,10 +890,10 @@ Records: 2  Duplicates: 0  Warnings: 0
 |  3 | john          | john123!   | 2020-07-02 11:47:16 |
 |  4 | tom           | tom123!    | 2020-07-02 11:47:16 |
 +----+---------------+------------+---------------------+
+<span class="dim">
 4 rows in set (0.00 sec)
 </span>
 <span class="prompt">mysql&gt;</span> SELECT username,password FROM logins;
-<span class="dim">
 +---------------+------------+
 | username      | password   |
 +---------------+------------+
@@ -913,6 +902,7 @@ Records: 2  Duplicates: 0  Warnings: 0
 | john          | john123!   |
 | tom           | tom123!    |
 +---------------+------------+
+<span class="dim">
 4 rows in set (0.00 sec)
 </span>
 </code></pre>
@@ -922,8 +912,8 @@ Records: 2  Duplicates: 0  Warnings: 0
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   منستخدم الأمر
-   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DROP</span>
-   لنحذف جدول أو قاعدة بيانات من ال Server بشكل نهائي، يعني لما بستخدم هاد الأمر على جدول او قاعدة بيانات بتم حذفه بشكل نهائي مع البيانات يلي جواته ومستحيل اقدر رجعو إلا اذا كان عندي نسخة احتياطية.
+   <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DROP</span>
+   لنحذف جدول أو قاعدة بيانات من ال Server بشكل نهائي، يعني لما بستخدم هاد الأمر على جدول او قاعدة بيانات بينحذف بشكل نهائي مع البيانات يلي جواته ومستحيل اقدر رجعو إلا اذا كان عندي نسخة احتياطية.
 </p>
 
 <div class="code-title">SQL</div>
@@ -943,10 +933,10 @@ Empty set (0.00 sec)
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   هاد الأمر منستخدمه حتى نغير بهيكيلية الجدول الموجود، يعني اذا بدنا نغير اسم الجدول، او نضيف عمود جديد، او نحذف عمود، او حتى انو نغير اسم عمود موجود رح نستخدم
-   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">ALTER</span>
-   هو متل اداة لصيانة الجدول😅<br>
-   فينا نستخدمه لإضافة اعمدة باستخدام
-   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">ADD</span>:
+   <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">ALTER</span>
+   هو متل اداة لصيانة الجدول😅<br><br>
+   فينا نستخدمه لإضافة اعمدة مع الأمر
+   <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">ADD</span>:
 </p>
 
 <div class="code-title">SQL</div>
@@ -959,8 +949,8 @@ Query OK, 0 rows affected (0.01 sec)
 </code></pre>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
-  وكمان فيني غير اسم عمود موجود بأمر
-   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">RENAME COLUMN</span>:
+  وكمان بقدر غير اسم عمود موجود بأمر
+   <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">RENAME COLUMN</span>:
 </p>
 
 <pre class="terminal-box"><code>
@@ -972,7 +962,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   وبقدر حتى اني عدل ال Datatype تبع الأعمدة الموجودة باستخدام 
-   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">MODIFY</span>:
+   <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">MODIFY</span>:
 </p>
 
 <pre class="terminal-box"><code>
@@ -984,7 +974,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   واخيرا بقدر اني احذف عمود بشكل نهائي اذا بستخدم امر
-   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DROP</span>:
+   <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">DROP</span>:
 </p>
 
 <pre class="terminal-box"><code>
@@ -995,18 +985,18 @@ Query OK, 0 rows affected (0.01 sec)
 </code></pre>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
-بقدر استخدم اي وحدة من الأوامر يلي فوق طول ما اني معي الصلاحيات الكافية.
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+بقدر استخدم اي وحدة من الأوامر يلي فوق طول ما معي الصلاحيات الكافية.
 </div>
 ---
 <h3 id="🟡 UPDATE DROP:" dir=""><span class="me-2"><strong>🟡 UPDATE DROP:</strong></span><a href="#🟡 UPDATE DROP:" class="anchor text-muted"></a></h3>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   بالنسبة لأمر
-   <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">UPDATE</span>
-   فهو بيشبه شوي ال ALTER، بس الفرق انو ALTER بعدل على الاعمدة والهيكلية تبع الجدول، بينما UPDATE بعدل القيم داخل الجدول(الصفوف).<br>
-   يعني مثلا عندي عمود فيه اسماء السناغل، وحطيت اسمك يا عزيزي القارئ(لانو لو عندك حدا تحكي معو ماكنت ضيعت وقتك هون🫠)، بأمر UPDATE بقدر غير بقدر غير اسمك بس بكرا ترتبط نشالله ونفرحلك وحط اسمي لحالي.<br>
-   بينما ال ALTER بغير العمود كلو وبخليه اسماء المرتبطين مثلا🌚<br>
+   <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">UPDATE</span>
+   فهو بيشبه شوي ال ALTER، بس الفرق انو ALTER بعدل على الاعمدة والهيكلية تبع الجدول، بينما UPDATE بعدل القيم داخل الجدول(الصفوف).<br><br>
+   يعني مثلا عندي عمود فيه اسماء السناغل، وحطيت اسمك يا عزيزي القارئ (لانو لو عندك حدا تحكي معو ماكنت ضيعت وقتك هون🫠)، بأمر UPDATE بقدر غير بقدر غير اسمك وقت ترتبط نشالله ونفرحلك ويضل اسمي لحالي.<br>
+   بينما ال ALTER بغير العمود كلو وبخليه اسماء المرتبطين مثلا🌚<br><br>
    وبستخدمه بهالطريقة:
 </p>
 
@@ -1018,7 +1008,7 @@ Query OK, 0 rows affected (0.01 sec)
 </code></pre>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
-  الفكرة اني بحط امر UPDATE بعدين بحط اسم الجدول اما بالنسبة ل SET فهو بحدد شو هي الأعمدة يلي بدي غير القيم تبعها وشو هي القيم الجديدة، وآخر الشي بستخدم WHERE حتى حط اذا عندي شرط للتغيير واذا ماحطيته رح يتغير الكل.<br>
+  الفكرة اني بحط امر UPDATE بعدين بحط اسم الجدول اما بالنسبة ل SET فهو بحدد شو هي الأعمدة يلي بدي غير القيم تبعها وشو هي القيم الجديدة، وآخر الشي بستخدم WHERE حتى حط اذا عندي شرط للتغيير واذا ماحطيته رح يتغير الكل.<br><br>
   مثال عملي، لنفرض عندي هاد الجدول:<br>
 </p>
 
@@ -1032,7 +1022,6 @@ Rows matched: 3  Changed: 3  Warnings: 0
 
 </span>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins;
-<span class="dim">
 +----+---------------+-----------------+---------------------+
 | id | username      | password        | date_of_joining     |
 +----+---------------+-----------------+---------------------+
@@ -1041,6 +1030,7 @@ Rows matched: 3  Changed: 3  Warnings: 0
 |  3 | john          | change_password | 2020-07-02 11:47:16 |
 |  4 | tom           | change_password | 2020-07-02 11:47:16 |
 +----+---------------+-----------------+---------------------+
+<span class="dim">
 4 rows in set (0.00 sec)
 </span>
 </code></pre>
@@ -1049,8 +1039,10 @@ Rows matched: 3  Changed: 3  Warnings: 0
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   ال Query السابقة بدلت كلمات السر لكل السجلات يلي ال id تبعها اكبر من 1 ل change_password
 </p>
-
-<h3 id="🟡 Questions" dir=""><span class="me-2" style="color:white"><strong>🟡 Questions</strong></span><a href="#🟡 Questions" class="anchor text-muted"></a></h3>
+---
+<p dir="" style="color: white; font-size: 22px; line-height: 1.6;">
+  <strong>HTB Questions:</strong>
+</p>
 
 <p dir="" style="font-size: 20px; line-height: 1.6;">
   Answer the question(s) below to complete this Section and earn cubes!
@@ -1064,7 +1056,7 @@ Rows matched: 3  Changed: 3  Warnings: 0
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   اول شي اتصلت على قاعدة البيانات وعرضت كلشي DATABASES
 </p>
-```
+```sql
 mysql -u root -h <Target system IP> -P <Port Namber> -p
 SHOW DATABASES;
 ```
@@ -1076,7 +1068,7 @@ SHOW DATABASES;
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   بعدين اخترتها واستعرضت كلشي جداول فيها حتى لقيت ال departments
 </p>
-```
+```sql
 USE employees;
 SHOW TABLES;
 ```
@@ -1088,7 +1080,7 @@ SHOW TABLES;
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   آخر شي عرضت كلشي موجود جوا هالقاعدة البيانات
 </p>
-```
+```sql
 SELECT * FROM departments;
 ```
 
@@ -1100,21 +1092,14 @@ SELECT * FROM departments;
 <h2 id="📌 Query Results" dir=""><span class="me-2"><strong>📌 Query Results</strong></span><a href="#📌 Query Results" class="anchor text-muted"></a></h2>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
-  بهالقسم رح نشوف كيف فينا نتحكم بالنتائج يلي يلي بتطلع من ال Quries
-</p>
-
-
-
-<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
-  بستخدم الأمر 
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">ORDER BY</span>
+  بهالقسم رح نشوف كيف فينا نتحكم بالنتائج يلي يلي بتطلع من ال Quries، بستخدم الأمر 
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">ORDER BY</span>
   مشان رتب نتائج الاستعلام من عمود معين.
 </p>
 
 <div class="code-title">SQL</div>
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins ORDER BY password;
-<span class="dim">
 +----+---------------+------------+---------------------+
 | id | username      | password   | date_of_joining     |
 +----+---------------+------------+---------------------+
@@ -1123,20 +1108,20 @@ SELECT * FROM departments;
 |  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
 |  4 | tom           | tom123!    | 2020-07-02 11:47:16 |
 +----+---------------+------------+---------------------+
+<span class="dim">
 4 rows in set (0.00 sec)
 </span>
 </code></pre>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   وهيك رتبنا النتائج حسب عمود
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Password</span>
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">Password</span>
   بشكل تصاعدي من A الى Z.
 </p>
 
 <div class="code-title">SQL</div>
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins ORDER BY password DESC;
-<span class="dim">
 +----+---------------+------------+---------------------+
 | id | username      | password   | date_of_joining     |
 +----+---------------+------------+---------------------+
@@ -1145,19 +1130,19 @@ SELECT * FROM departments;
 |  3 | john          | john123!   | 2020-07-02 11:47:16 |
 |  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
 +----+---------------+------------+---------------------+
+<span class="dim">
 4 rows in set (0.00 sec)
 </span>
 </code></pre>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   وهون رتبناهن بشكل تنازلي من Z الى A.<br><br>
-  واذا عندي قيم مكررة بقدر رتبها حسب عمود تاني بهالطريقة:
+  واذا عندي قيم مكررة بقدر رتبهن حسب عمود تاني بهالطريقة:
 </p>
 
 <div class="code-title">SQL</div>
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins ORDER BY password DESC, id ASC;
-<span class="dim">
 +----+---------------+-----------------+---------------------+
 | id | username      | password        | date_of_joining     |
 +----+---------------+-----------------+---------------------+
@@ -1166,6 +1151,7 @@ SELECT * FROM departments;
 |  3 | john          | change_password | 2020-07-02 11:47:16 |
 |  4 | tom           | change_password | 2020-07-02 11:50:20 |
 +----+---------------+-----------------+---------------------+
+<span class="dim">
 4 rows in set (0.00 sec)
 </span>
 </code></pre>
@@ -1174,20 +1160,20 @@ SELECT * FROM departments;
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   بستخدم الأمر 
-  <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">LIMIT</span>
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">LIMIT</span>
   مشان حدد عدد السجلات يلي بدي شوفها من النتائج وخاصة اذا كان الجدول فيو كتير Data.
 </p>
 
 <div class="code-title">SQL</div>
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins LIMIT 2;
-<span class="dim">
 +----+---------------+------------+---------------------+
 | id | username      | password   | date_of_joining     |
 +----+---------------+------------+---------------------+
 |  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
 |  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
 +----+---------------+------------+---------------------+
+<span class="dim">
 2 rows in set (0.00 sec)
 </span>
 </code></pre>
@@ -1199,19 +1185,19 @@ SELECT * FROM departments;
 <div class="code-title">SQL</div>
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins LIMIT 1, 2;
-<span class="dim">
 +----+---------------+------------+---------------------+
 | id | username      | password   | date_of_joining     |
 +----+---------------+------------+---------------------+
 |  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
 |  3 | john          | john123!   | 2020-07-02 11:47:16 |
 +----+---------------+------------+---------------------+
+<span class="dim">
 2 rows in set (0.00 sec)
 </span>
 </code></pre>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
     ال Offset بتبدأ من ال 0 فانا هون اخدت السجل رقم 2 و 3
 </div>
 ---
@@ -1219,14 +1205,13 @@ SELECT * FROM departments;
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   بستخدم
-<span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">WHERE</span>
+<span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">WHERE</span>
 مع امر SELECT مشان فلتر البحث بناء على شرط معين وما طلع كلشي نتائج عندي، يعني مثلا بدي كل الموظفين يلي بلشو شغل بعد تاريخ محدد او بدي يلي ال id تبعهن اكبر من عدد محدد وكتير غير امثلة...
 </p>
 
 <div class="code-title">SQL</div>
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins WHERE id > 1;
-<span class="dim">
 +----+---------------+------------+---------------------+
 | id | username      | password   | date_of_joining     |
 +----+---------------+------------+---------------------+
@@ -1234,6 +1219,7 @@ SELECT * FROM departments;
 |  3 | john          | john123!   | 2020-07-02 11:47:16 |
 |  4 | tom           | tom123!    | 2020-07-02 11:47:16 |
 +----+---------------+------------+---------------------+
+<span class="dim">
 3 rows in set (0.00 sec)
 </span>
 </code></pre>
@@ -1245,18 +1231,18 @@ SELECT * FROM departments;
 <div class="code-title">SQL</div>
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins where username = 'admin';
-<span class="dim">
 +----+----------+----------+---------------------+
 | id | username | password | date_of_joining     |
 +----+----------+----------+---------------------+
 |  1 | admin    | p@ssw0rd | 2020-07-02 00:00:00 |
 +----+----------+----------+---------------------+
+<span class="dim">
 1 row in set (0.00 sec)
 </span>
 </code></pre>
 
 <div class="note" dir="rtl" style=" font-size: 20px;">
-    <span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
+    <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">✅ ملاحظة: </span>
 النصوص او التواريخ لازم حطهن جوا علامات تنصيص مثل ('admin') اما الأرقام فمو بحاجة
 </div>
 ---
@@ -1264,43 +1250,46 @@ SELECT * FROM departments;
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   امر
-<span style="font-family: 'Amiri'; color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">LIKE</span>
-بستخدمو مع الشرط WHERE مشان ابحث عن نمط معين بالنصوص، يعني لو بدك تدور على شي بيشبه كلمة معينة فمنقدر نستخدمه، يعني مثلا لو بدي دور بالجداول على اي حدا بأسمه في كلمة admin، فبستخدم هالطريقة
+<span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">LIKE</span>
+بستخدمه مع الشرط WHERE مشان ابحث عن نمط معين بالنصوص، يعني لو بدك تدور على شي بيشبه كلمة معينة فمنقدر نستخدمه، يعني مثلا لو بدي دور بالجداول على اي حدا بأسمه في كلمة admin، فبستخدم هالطريقة
 </p>
 
 <div class="code-title">SQL</div>
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins WHERE username LIKE 'admin%';
-<span class="dim">
-+----+---------------+------------+---------------------+
+x+----+---------------+------------+---------------------+
 | id | username      | password   | date_of_joining     |
 +----+---------------+------------+---------------------+
 |  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
 |  4 | administrator | adm1n_p@ss | 2020-07-02 15:19:02 |
 +----+---------------+------------+---------------------+
+<span class="dim">
 2 rows in set (0.00 sec)
 </span>
 </code></pre>
 
 <p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
   الـ % معناها أي حروف بعد admin. فالأمر جاب admin و administrator لأنهم بيبدأو بـ admin.<br>
-  طيب مثلا بدي جيب السجلات يلي ال username تبعها مكون من 3 خانات:
+  طيب مثلا بدي جيب السجلات يلي ال username تبعها مكون من 3 خانات فبستخدم ال ( _ ) بالشكل التالي:
 </p>
 
 <div class="code-title">SQL</div>
 <pre class="terminal-box"><code>
 <span class="prompt">mysql&gt;</span> SELECT * FROM logins WHERE username like '___';
-<span class="dim">
 +----+----------+----------+---------------------+
 | id | username | password | date_of_joining     |
 +----+----------+----------+---------------------+
 |  3 | tom      | tom123!  | 2020-07-02 15:18:56 |
 +----+----------+----------+---------------------+
+<span class="dim">
 1 row in set (0.01 sec)
 </span>
 </code></pre>
 
-<h3 id="⚫ Questions" dir=""><span class="me-2" style="color:white"><strong>⚫ Questions</strong></span><a href="#⚫ Questions" class="anchor text-muted"></a></h3>
+<p dir="" style="color: white; font-size: 22px; line-height: 1.6;">
+  <strong>HTB Questions:</strong>
+</p>
+
 <p dir="" style="font-size: 20px; line-height: 1.6;">
   Answer the question(s) below to complete this Section and earn cubes!
   What is the last name of the employee whose first name starts with "Bar" AND who was hired on 1990-01-01? 
@@ -1352,6 +1341,344 @@ SELECT * FROM employees WHERE first_name like 'Bar%' AND hire_date = '1990-01-01
   <img src="{{ '/images/HTB/12.png' | relative_url }}" alt="HTB">
 </div>
 ---
+<h2 id="📌 SQL Operators" dir=""><span class="me-2"><strong>📌 SQL Operators</strong></span><a href="#📌 SQL Operators" class="anchor text-muted"></a></h2>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+  احيانا ما بكفي شرط واحد لجلب البيانات من قاعدة البيانات وبحتاج اكتر من شرط بنفس الوقت، وشفنا هالشي بحل السؤال السابق.<br><br>
+  بهاد الدرس رح نحكي عن ال Operators وكيف ندمج اكتر من شرط بنفس ال query، والخبر الحلو انو هاد آخر درس SQL ومن الدرس القادم رح نبلش بال Injection😍، لهيك صحصح معي وخلينا نخلص هالدرس بسرعة🔥
+</p>
+
+<h3 id="🟠 AND Operator:" dir=""><span class="me-2"><strong>🟠 AND Operator:</strong></span><a href="#🟠 AND Operator:" class="anchor text-muted"></a></h3>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+  ال <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">And Operator</span>
+  بياخد شرطين وبرجع قيمة <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">True</span> او 
+  <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">False</span> بناءً على تقييمهم
+</p>
+```sql
+condition1 AND condition2
+```
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+النتيجة لل <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">And</span> بتكون <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">True</span> فقط اذا كان الشرط الاول والشرط الثاني نتيجتهم <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">True</span>، ولو وحدة بيناتهم <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">False</span> بتطلع النتيجة <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">False</span><br><br>
+بعرف مافهمت كتير لهيك خلينا ناخد هالمثال، لو كتبنا هيك بقاعدة البيانات:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
+<span class="prompt">mysql&gt;</span> SELECT 1 = 1 AND 'test' = 'test';
++---------------------------+
+| 1 = 1 AND 'test' = 'test' |
++---------------------------+
+|                         1 |
++---------------------------+
+<span class="dim">
+1 row in set (0.00 sec)
+</span>
+<span class="prompt">mysql&gt;</span> SELECT 1 = 1 AND 'test' = 'abc';
++--------------------------+
+| 1 = 1 AND 'test' = 'abc' |
++--------------------------+
+|                        0 |
++--------------------------+
+<span class="dim">
+1 row in set (0.00 sec)
+</span>
+</code></pre>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+بالمثال الأول طلبنا من قاعدة البيانات تتحقق من إذا ما كان 1 = 1 (صحيح)، وإذا كان النص 'test' = 'test'(كمان صحيح)، النتيجة النهائية من جمعهم بتكون صحيح، القيمة 1 يعني صحيح لانه بال MySQL اي قيمة غير الصفر بتعني صحيح.<br><br>
+بالمثال التاني عدلنا شوي عالإستعلام، 1=1 (صحيح) و 'test' = 'abc' (خطأ)، النتيجة كانت خطأ للاستعلام بالكامل(0)
+</p>
+
+> حتى تكون النتيجة صح لازم الشرطين يكونو صح، واذا كان في غلط بواحد النتيجة بتكون خطأ
+{: .prompt-info }
+
+---
+
+<h3 id="🟠 OR Operator:" dir=""><span class="me-2"><strong>🟠 OR Operator:</strong></span><a href="#🟠 OR Operator:" class="anchor text-muted"></a></h3>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+كمان ال <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">OR Operator</span> بياخد شرطين، بس بتكون النتيجة صحيحة لما واحد على الأقل صح، وما بيشترط على الاثنين انو يكونو صح.<br><br>
+  <span style="  color:rgb(221, 39, 78); font-size: 27px; line-height: 1.6;"><strong>مثال:</strong></span><br>
+لو كتبنا استعلام متل هاد:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
+<span class="prompt">mysql&gt;</span> SELECT 1 = 1 OR 'test' = 'abc';
+</code></pre>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+هون بقول تحقق اذا كانت 1 = 1 (صحيحة)، أو إذا كان النص 'test' = 'abc' (خطأ)، فالنتيجة بتكون:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
++-------------------------+
+| 1 = 1 OR 'test' = 'abc' |
++-------------------------+
+|                       1 |
++-------------------------+
+</code></pre>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+يس النتيجة بتكون صحيحة، طيب ليش!<br>
+السبب يا صديقي أن الشرط الأول 1 = 1 صحيح، واتفقنا انو ال OR بيكتفي بأنو يكون واحد من الشرطين يكون صحيح.<br><br>
+طيب لو كتبت ال query التانية بهالطريقة:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
+<span class="prompt">mysql&gt;</span> SELECT 1 = 2 OR 'test' = 'abc';
+</code></pre>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+هون بقول تحقق اذا كانت 2 = 1 (خطأ)، أو إذا كان النص 'test' = 'abc' (خطأ)، فالنتيجة بتكون:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
++-------------------------+
+| 1 = 2 OR 'test' = 'abc' |
++-------------------------+
+|                       0 |
++-------------------------+
+</code></pre>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+لأن الشرطين خطأ، وانا بحاجة واحد صحيح على الأقل حتى اقدر اعتبرها صحيحة.
+</p>
+
+> حتى تكون النتيجة صح لازم شرط واحد على الأقل يكونو صح، واذا كانو كل الشروط خطأ النتيجة بتكون خطأ
+{: .prompt-info }
+
+---
+
+<h3 id="🟠 NOT Operator:" dir=""><span class="me-2"><strong>🟠 NOT Operator:</strong></span><a href="#🟠 NOT Operator:" class="anchor text-muted"></a></h3>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+بالنسبة لل <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">NOT Operator</span>
+بياخد شرط واحد وبيعكس النتيجة، يعني لو الشرط صحيح برجع نتيجة <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">False</span>, ولو الشرط خطأ برجع النتيجة <span style="  color:rgb(138, 201, 38); font-size: 20px; line-height: 1.6;">True</span><br><br>
+<span style="  color:rgb(221, 39, 78); font-size: 27px; line-height: 1.6;"><strong>مثال:</strong></span><br>
+لو كتبت استعلام متل هيك:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
+<span class="prompt">mysql&gt;</span> SELECT NOT 1 = 1;
+</code></pre>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+هون عم قله يعطيني عكس نتيجة 1 = 1 ويلي هي صحيحة، فبيعطيني:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
++-----------+
+| NOT 1 = 1 |
++-----------+
+|         0 |
++-----------+
+</code></pre>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+طيب لو كتبت:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
+<span class="prompt">mysql&gt;</span> SELECT NOT 1 = 2;
+</code></pre>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+هون عم قله يعطيني عكس نتيجة 2 = 1 ويلي هي غلط، فبيعطيني:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
++-----------+
+| NOT 1 = 2 |
++-----------+
+|         1 |
++-----------+
+</code></pre>
+
+> بيعكس نتيجة الشرط: صحيح يصير غلط، وغلط يصير صحيح
+{: .prompt-info }
+
+---
+
+<h3 id="🟠 Symbol Operator:" dir=""><span class="me-2"><strong>🟠 Symbol Operator:</strong></span><a href="#🟠 Symbol Operator:" class="anchor text-muted"></a></h3>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+بلغة ال SQL، بدل ما تستخدم AND, OR, NOT، ممكن تستخدم رموز بديلة:<br>
+</p>
+
+- AND = &&
+- OR = \|\|
+- NOT = !
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+وهي امثلة من الأوامر السابقة باستخدام الرموز:
+</p>
+
+<div class="code-title">SQL</div>
+
+<pre class="terminal-box"><code>
+<span class="prompt">mysql&gt;</span> SELECT 1 = 1 && 'test' = 'abc';
++-------------------------+
+| 1 = 1 && 'test' = 'abc' |
++-------------------------+
+|                       0 |
++-------------------------+
+<span class="dim">
+1 row in set, 1 warning (0.00 sec)
+</span>
+<span class="prompt">mysql&gt;</span> SELECT 1 = 1 || 'test' = 'abc';
++-------------------------+
+| 1 = 1 || 'test' = 'abc' |
++-------------------------+
+|                       1 |
++-------------------------+
+<span class="dim">
+1 row in set, 1 warning (0.00 sec)
+</span>
+<span class="prompt">mysql&gt;</span> SELECT 1 != 1;
++--------+
+| 1 != 1 |
++--------+
+|      0 |
++--------+
+<span class="dim">
+1 row in set (0.00 sec)
+</span>
+</code></pre>
+
+> بالنسبة للرمز =! معناه غير يساوي يعني 1 لا يساوي 1
+{: .prompt-tip }
+
+---
+
+<h3 id="🟠 Operators in queries:" dir=""><span class="me-2"><strong>🟠 Operators in queries:</strong></span><a href="#🟠 Operators in queries:" class="anchor text-muted"></a></h3>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+خلينا نشوف كيف نستخدم هي ال Operators بقاعدة بيانات حقيقية.<br><br>
+لنفترض عنا جدول اسمه logins بيحتوي على بيانات المستخدمين متل id, username, password, date_of_joining<br>
+وقررت جيب كل السجلات ما عدا السجلات الخاصة بالمستخدم john
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
+<span class="prompt">mysql&gt;</span> SELECT * FROM logins WHERE username != 'john';
++----+---------------+------------+---------------------+
+| id | username      | password   | date_of_joining     |
++----+---------------+------------+---------------------+
+|  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
+|  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
+|  4 | tom           | tom123!    | 2020-07-02 11:47:16 |
++----+---------------+------------+---------------------+
+<span class="dim">
+3 rows in set (0.00 sec)
+</span>
+</code></pre>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+قاعدة البيانات عرضت كل المستخدمين عدا john.<br><br>
+وفرضاً قررت اعرض كل المستخدمين عدا john ويلي ال id تبعهم اكبر من 1:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
+<span class="prompt">mysql&gt;</span> SELECT * FROM logins WHERE username != 'john' AND id > 1;
++----+---------------+------------+---------------------+
+| id | username      | password   | date_of_joining     |
++----+---------------+------------+---------------------+
+|  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
+|  4 | tom           | tom123!    | 2020-07-02 11:47:16 |
++----+---------------+------------+---------------------+
+<span class="dim">
+2 rows in set (0.00 sec)
+</span>
+</code></pre>
+
+---
+
+<h3 id="🟠 Multiple Operator Precedence:" dir=""><span class="me-2"><strong>🟠 Multiple Operator Precedence:</strong></span><a href="#🟠 Multiple Operator Precedence:" class="anchor text-muted"></a></h3>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+بلغة ال SQL ممكن استخدم اكثر من Operator بنفس الاستعلام، متل جمع وطرح ومقارنات، و AND, OR, NOT ، بس مو كل ال Operators بتتنفذ بنفس الوقت لانه في ترتيب للأولويات وهو يلي بحدد أي عملية تتنفذ اول والترتيب بكون عالشكل التالي:
+</p>
+
+- القسمة (/)، الضرب (*)، الباقي (%)ء
+- الجمع (+)، الطرح (-).
+- عوامل المقارنة (مثل =، >، <، <=، >=، !=، LIKE).
+- NOT أو !.
+- AND أو &&.
+- OR أو \|\|.
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+<span style="  color:rgb(221, 39, 78); font-size: 27px; line-height: 1.6;"><strong>أمثلة على الأولوليات:</strong></span><br><br>
+مثلا لو عندي هاد الاستعلام:
+</p>
+
+```sql
+SELECT * FROM logins WHERE username != 'tom' AND id > 3 - 2;
+```
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+بنفذ اول شي عملية الطرح:
+</p>
+`3 - 2 = 1`
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+بالنسبة لعمليات المقارنة != و > ، هنن التنين الهن نفس الأولوية فبيتنفذوا مع بعض:<br>
+username != 'tom' بتجيب كل المستخدمين عدا يلي اسمهن tom<br>
+id > 1 بيجيب كل السجلات اللي رقم المعرف فيها أكبر من 1.<br><br>
+بالنهاية ال AND بيربط بيناتهن، ولازم الشرطين يكونو صحيحين عشان يظهر السجل.<br><br>
+النتيجة:
+</p>
+
+<div class="code-title">SQL</div>
+<pre class="terminal-box"><code>
+<span class="prompt">mysql&gt;</span> SELECT * FROM logins WHERE username != 'tom' AND id > 3 - 2;
++----+---------------+------------+---------------------+
+| id | username      | password   | date_of_joining     |
++----+---------------+------------+---------------------+
+|  2 | administrator | adm1n_p@ss | 2020-07-03 12:03:53 |
+|  3 | john          | john123!   | 2020-07-03 12:03:57 |
++----+---------------+------------+---------------------+
+<span class="dim">
+2 rows in set (0.00 sec)
+</span>
+</code></pre>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+يعني السجلات يلي ظهرت بتحقق الشرطين، الاسم ليس tom و ال id اكبر من 1.<br><br>
+رح نشوف غير سيناريوهات لل operator precedence بالأقسام القادمة.
+</p>
+
+<p dir="" style="color: white; font-size: 22px; line-height: 1.6;">
+  <strong>HTB Questions:</strong>
+</p>
+
+<p style="font-size: 20px; line-height: 1.6;">
+Answer the question(s) below to complete this Section and earn cubes!<br><br>
+ In the 'titles' table, what is the number of records WHERE the employee number is greater than 10000 OR their title does NOT contain 'engineer'?  
+</p>
+
+<p dir="" style="color: white; font-size: 22px; line-height: 1.6;">
+  <strong>Answer: 654</strong>
+</p>
+
+<div class="htblogo">
+  <img src="{{ '/images/HTB/.png' | relative_url }}" alt="HTB">
+</div>
+
+
+
+
+
+
 
 <script src="https://giscus.app/client.js"
         data-repo="Farouk9423/farouk9423.github.io"
