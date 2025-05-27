@@ -1665,7 +1665,7 @@ id > 1 بيجيب كل السجلات اللي رقم المعرف فيها أك
 Answer the question(s) below to complete this Section and earn cubes!<br><br>
  In the 'titles' table, what is the number of records WHERE the employee number is greater than 10000 OR their title does NOT contain 'engineer'?  
 </p>
-
+<br>
 <p dir="" style="color: white; font-size: 22px; line-height: 1.6;">
   <strong>Answer: 654</strong>
 </p>
