@@ -1670,9 +1670,9 @@ Answer the question(s) below to complete this Section and earn cubes!<br><br>
   <strong>Answer: 654</strong>
 </p>
 
-<div class="htblogo">
+<!-- <div class="htblogo">
   <img src="{{ '/images/HTB/.png' | relative_url }}" alt="HTB">
-</div>
+</div> -->
 
 
 
