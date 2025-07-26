@@ -1014,6 +1014,7 @@ div {
 </p>
 [wikipedia](https://en.wikipedia.org/wiki/Comparison_of_JavaScript-based_web_frameworks)
 
+<h2 id="Front End Vulnerabilities" dir=""><span class="me-2"><strong>Front End Vulnerabilities</strong></span><a href="#Front End Vulnerabilities" class="anchor text-muted"></a></h2>
 
 <script src="https://giscus.app/client.js"
         data-repo="Farouk9423/farouk9423.github.io"
