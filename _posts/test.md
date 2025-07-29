@@ -11,7 +11,7 @@ image:
   path: /images/Labs/jerry/1.png
   alt: 
 description: 
----
+----
 
 # 1️⃣ HTB Jerry Lab - Arabic Hack The Box Report
 
